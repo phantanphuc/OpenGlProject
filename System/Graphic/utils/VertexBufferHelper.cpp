@@ -5,6 +5,10 @@ VertexBufferHelper::VertexBufferHelper(){
 	offset_color = -1;
 	offset_normal = -1;
 	offset_texture = -1;
+
+	for (int i = 0; i < MAX_SECTION_COUNT; ++i) {
+		sectionList[i] = Section::NONE;
+	}
 }
 
 VertexBufferHelper::~VertexBufferHelper(){
@@ -18,10 +22,12 @@ void VertexBufferHelper::generateBuffer(int n, ...)
 	va_start(vl, n);
 
 	int num_of_vertex = va_arg(vl, int);
+	sectionCount = n - 1;
 
 	for (int i = 0; i < n;i++)
 	{
 		Section val = va_arg(vl, Section);
+		sectionList[i] = val;
 		switch (val)
 		{
 		case POSITION:
@@ -90,6 +96,19 @@ void VertexBufferHelper::setVertexTexture(float * src, int n)
 		8);
 }
 
+void VertexBufferHelper::setSection(int n, ...)
+{
+	va_list vl;
+	va_start(vl, n);
+	sectionCount = n;
+	for (int i = 0; i < n;i++)
+	{
+		Section val = va_arg(vl, Section);
+		sectionList[i] = val;
+	}
+	va_end(vl);
+}
+
 void VertexBufferHelper::setIndexBufferRef(int * reference, int size)
 {
 	indexBuffer = reference;
@@ -120,5 +139,10 @@ int VertexBufferHelper::getVertexBufferSize()
 int VertexBufferHelper::getIndexBufferSize()
 {
 	return indexBufferSize;
+}
+
+int VertexBufferHelper::getGetNumOfSection()
+{
+	return sectionCount;
 }
 

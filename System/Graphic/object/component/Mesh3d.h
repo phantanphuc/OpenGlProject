@@ -18,6 +18,12 @@ public:
 	GLuint getFragmentShaderId();
 	GLuint getShaderProgramId();
 
+	void generateVBO();
+	void generateEBO();
+
+	GLuint getVBO();
+	GLuint getEBO();
+
 private:
 	GLuint vertexShader;
 	GLuint fragmentShader;

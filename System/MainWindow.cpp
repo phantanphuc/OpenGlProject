@@ -27,13 +27,6 @@ void testeee() {
 	objShaderHelper->useShaderFromFile("Resource/Shaders/FirstFragmentShader.glsl", ShaderType::FRAGMENTSHADER);
 
 
-	GLchar* fragmentShaderSource = "#version 330 core\n"
-		"out vec4 color;\n"
-		"void main()\n"
-		"{\n"
-		"color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-		"}\n\0";
-
 	mesh3dref->setVertexShaderId(OpenglController::getInstance()->
 		CompileVertexShader(objShaderHelper->getVertexShader()));
 	mesh3dref->setFragmentShaderId(OpenglController::getInstance()->
@@ -41,13 +34,10 @@ void testeee() {
 	OpenglController::getInstance()->createShaderProgram(mesh3dref);
 
 	
-	GLuint VBO, EBO;
-
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
+	mesh3dref->generateVBO();
+	mesh3dref->generateEBO();
 
 	VertexBufferHelper helper = VertexBufferHelper();
-	//helper.setVertexBufferRef(vertices, sizeof(vertices));
 
 	helper.generateBuffer(2, 4, Section::POSITION);
 	helper.setVertexPosition(vertices, 0);
@@ -56,7 +46,10 @@ void testeee() {
 	helper.setVertexPosition(vertices + 9, 3);
 
 	helper.setIndexBufferRef((int*)indices, sizeof(indices));
-	OpenglController::getInstance()->bindBuffer(VBO, EBO, &helper);
+	OpenglController::getInstance()->bindBuffer(
+		mesh3dref->getVBO(), 
+		mesh3dref->getEBO(), 
+		&helper);
 
 
 

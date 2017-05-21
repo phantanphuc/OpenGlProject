@@ -4,6 +4,8 @@
 #include <stdarg.h> 
 #include <memory.h>
 
+#define MAX_SECTION_COUNT 5
+
 enum Section {
 	NONE, POSITION, COLOR, NORMAL, TEXTURE
 };
@@ -18,6 +20,10 @@ public:
 	////////////////////////////////////////////////
 	void generateBuffer(int n, ...);
 
+	/*
+	for setBuffer only, generateBuffer will automatically setSection
+	*/
+	void setSection(int n, ...);
 	
 
 	void setIndexBufferRef(int* reference, int size);
@@ -27,6 +33,8 @@ public:
 
 	int getVertexBufferSize();
 	int getIndexBufferSize();
+
+	int getGetNumOfSection();
 
 	/////////////////////////////////////////////////////////////////
 	////////////////// BUFFER MANIPULATION METHODS //////////////////
@@ -50,6 +58,10 @@ private:
 
 	int vertexBufferSize;
 	int indexBufferSize;
+
+	int sectionCount;
 	
+	Section sectionList[MAX_SECTION_COUNT];
+
 };
 #endif

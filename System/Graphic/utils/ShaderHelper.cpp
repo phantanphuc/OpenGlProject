@@ -44,8 +44,6 @@ void ShaderHelper::useShaderFromFile(char * path, ShaderType type)
 		}
 	}
 	
-	int n = 0;
-	n++;
 }
 
 char * ShaderHelper::getVertexShader()

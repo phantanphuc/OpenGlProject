@@ -37,3 +37,23 @@ GLuint Mesh3d::getShaderProgramId()
 {
 	return shaderProgram;
 }
+
+void Mesh3d::generateVBO()
+{
+	glGenBuffers(1, &VBO);
+}
+
+void Mesh3d::generateEBO()
+{
+	glGenBuffers(1, &EBO);
+}
+
+GLuint Mesh3d::getVBO()
+{
+	return VBO;
+}
+
+GLuint Mesh3d::getEBO()
+{
+	return EBO;
+}
