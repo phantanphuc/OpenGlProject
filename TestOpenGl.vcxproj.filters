@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="System">
+      <UniqueIdentifier>{61a6ce60-ab76-4084-b477-76e53cec7292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Graphic">
+      <UniqueIdentifier>{b7b9eeb6-bc54-4ebc-914a-1598ea2b83e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Graphic\object">
+      <UniqueIdentifier>{476e34d4-c97b-4601-8385-4dbb1fbd0844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Graphic\object\Component">
+      <UniqueIdentifier>{d6291851-e986-4642-944a-fc2e01584cf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Graphic\utils">
+      <UniqueIdentifier>{84aa099e-3209-4a8d-a2e8-66f5c8c515e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{2352ac2a-6815-4df4-9ab5-f511f2a7a960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shaders">
+      <UniqueIdentifier>{8ae5bde0-5879-4be1-9ae2-f7e76f6488ed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="System\main.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\MainWindow.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\GraphicClass.cpp">
+      <Filter>System\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\OpenGlClass.cpp">
+      <Filter>System\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\object\GraphicObject.cpp">
+      <Filter>System\Graphic\object</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\OpenglController.cpp">
+      <Filter>System\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\object\component\Mesh3d.cpp">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\object\component\ComponentManager.cpp">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\utils\VertexBufferHelper.cpp">
+      <Filter>System\Graphic\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\utils\ShaderHelper.cpp">
+      <Filter>System\Graphic\utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="System\MainWindow.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\GraphicClass.h">
+      <Filter>System\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\OpenGlClass.h">
+      <Filter>System\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\object\GraphicObject.h">
+      <Filter>System\Graphic\object</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\OpenglController.h">
+      <Filter>System\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\object\component\Mesh3d.h">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\object\component\ComponentManager.h">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\object\component\ComponentHeader.h">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\utils\VertexBufferHelper.h">
+      <Filter>System\Graphic\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\utils\ShaderHelper.h">
+      <Filter>System\Graphic\utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\Shaders\FirstFragmentShader.glsl">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+    <None Include="Resource\Shaders\FirstVertexShader.glsl">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
