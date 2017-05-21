@@ -18,21 +18,33 @@ public:
 	GLuint getFragmentShaderId();
 	GLuint getShaderProgramId();
 
+	void generateVAO_VBO_EBO();
+	void generateVAO();
 	void generateVBO();
 	void generateEBO();
 
+	GLuint getVAO();
 	GLuint getVBO();
 	GLuint getEBO();
+
+	void setVertexNum(int num);
+	void setDrawType(GLenum type);
+
+	void render();
 
 private:
 	GLuint vertexShader;
 	GLuint fragmentShader;
 	GLuint shaderProgram;
 
+	GLuint VAO;
 	GLuint VBO;
 	GLuint EBO;
 
 	GLfloat* vertices;
 	GLuint * indices;
+
+	int num_of_vertex;
+	GLenum draw_mode;
 };
 #endif

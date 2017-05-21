@@ -17,9 +17,8 @@ public:
 
 	void createShaderProgram(Mesh3d* mesh3dComponent);
 
-	void bindBuffer(GLuint VBO, GLuint EBO, VertexBufferHelper* bufferHelper);
-	GLuint getVAO();
+	void bindBuffer(GLuint VAO, GLuint VBO, GLuint EBO, VertexBufferHelper* bufferHelper);
+	void bindBuffer(Mesh3d* mesh3dref, VertexBufferHelper* bufferHelper);
 private:
-	GLuint VAO;
 };
 #endif

@@ -3,7 +3,6 @@
 
 MainWindow* m_main_instance = nullptr;
 GraphicObject* obj;
-
 void testeee() {
 
 	obj = new GraphicObject;
@@ -34,8 +33,7 @@ void testeee() {
 	OpenglController::getInstance()->createShaderProgram(mesh3dref);
 
 	
-	mesh3dref->generateVBO();
-	mesh3dref->generateEBO();
+	mesh3dref->generateVAO_VBO_EBO();
 
 	VertexBufferHelper helper = VertexBufferHelper();
 
@@ -46,10 +44,8 @@ void testeee() {
 	helper.setVertexPosition(vertices + 9, 3);
 
 	helper.setIndexBufferRef((int*)indices, sizeof(indices));
-	OpenglController::getInstance()->bindBuffer(
-		mesh3dref->getVBO(), 
-		mesh3dref->getEBO(), 
-		&helper);
+
+	OpenglController::getInstance()->bindBuffer(mesh3dref, &helper);
 
 
 
@@ -162,11 +158,7 @@ void MainWindow::render()
 	glClearColor(0.7f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	//glUseProgram(shaderProgram);
-	glUseProgram(obj->getComponent<Mesh3d>()->getShaderProgramId());
-	glBindVertexArray((OpenglController::getInstance()->getVAO()));
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
+	obj->Execute();
 }
 
 

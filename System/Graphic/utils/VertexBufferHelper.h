@@ -35,7 +35,8 @@ public:
 	int getIndexBufferSize();
 
 	int getGetNumOfSection();
-
+	int getStride();
+	int getSectionSize(int sectionIndex);
 	/////////////////////////////////////////////////////////////////
 	////////////////// BUFFER MANIPULATION METHODS //////////////////
 	/////////////////////////////////////////////////////////////////
@@ -54,6 +55,9 @@ private:
 	int offset_normal;
 	int offset_texture;
 
+	/*
+	Stride: size of vertex in 4 byte (sizeof(float))
+	*/
 	int stride;
 
 	int vertexBufferSize;

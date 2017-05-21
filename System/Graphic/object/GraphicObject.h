@@ -12,18 +12,19 @@ public:
 	GraphicObject();
 	~GraphicObject();
 
-	std::vector<ComponentNode> ComponentList;
-
 	template <typename component_Type>
 	component_Type* getComponent();
 	
 	template <typename component_Type>
 	void addComponent(component_Type* component);
+
 	template <typename component_Type>
 	void addComponent();
 
+	void Execute();
 
-
+private:
+	std::vector<ComponentNode> ComponentList;
 };
 #endif
 

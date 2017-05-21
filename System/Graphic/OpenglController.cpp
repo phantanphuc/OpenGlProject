@@ -5,7 +5,7 @@
 OpenglController* m_instance_controller = nullptr;
 
 OpenglController::OpenglController(){
-	glGenVertexArrays(1, &VAO);
+	
 }
 
 OpenglController::~OpenglController(){
@@ -72,11 +72,8 @@ void OpenglController::createShaderProgram(Mesh3d * mesh3dComponent)
 
 }
 
-void OpenglController::bindBuffer(GLuint VBO, GLuint EBO, VertexBufferHelper* bufferHelper)
+void OpenglController::bindBuffer(GLuint VAO, GLuint VBO, GLuint EBO, VertexBufferHelper* bufferHelper)
 {
-
-
-
 	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -92,18 +89,15 @@ void OpenglController::bindBuffer(GLuint VBO, GLuint EBO, VertexBufferHelper* bu
 		GL_STATIC_DRAW);
 
 	int num_of_attribute = bufferHelper->getGetNumOfSection();
+	int offset = 0;
 
 	for (int i = 0; i < num_of_attribute; ++i) {
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-		glEnableVertexAttribArray(0);
+		int section_size = bufferHelper->getSectionSize(i);
+		glVertexAttribPointer(i, section_size, GL_FLOAT, GL_FALSE, bufferHelper->getStride() * sizeof(GLfloat), (GLvoid*)offset);
+		glEnableVertexAttribArray(i);
+		offset += section_size * sizeof(float);
 	}
 
-	// Position attribute
-	// glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
-	// glEnableVertexAttribArray(0);
-	// Color attribute
-	// glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	// glEnableVertexAttribArray(1);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
@@ -111,7 +105,40 @@ void OpenglController::bindBuffer(GLuint VBO, GLuint EBO, VertexBufferHelper* bu
 
 }
 
-GLuint OpenglController::getVAO()
+void OpenglController::bindBuffer(Mesh3d * mesh3dref, VertexBufferHelper * bufferHelper)
 {
-	return VAO;
+	glBindVertexArray(mesh3dref->getVAO());
+
+	glBindBuffer(GL_ARRAY_BUFFER, mesh3dref->getVBO());
+	glBufferData(GL_ARRAY_BUFFER,
+		bufferHelper->getVertexBufferSize(),
+		bufferHelper->getVertexBuffer(),
+		GL_STATIC_DRAW);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh3dref->getEBO());
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+		bufferHelper->getIndexBufferSize(),
+		bufferHelper->getIndexBuffer(),
+		GL_STATIC_DRAW);
+
+	int num_of_attribute = bufferHelper->getGetNumOfSection();
+	int offset = 0;
+
+	for (int i = 0; i < num_of_attribute; ++i) {
+		int section_size = bufferHelper->getSectionSize(i);
+		glVertexAttribPointer(i, section_size, GL_FLOAT, GL_FALSE, bufferHelper->getStride() * sizeof(GLfloat), (GLvoid*)offset);
+		glEnableVertexAttribArray(i);
+		offset += section_size * sizeof(float);
+	}
+
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glBindVertexArray(0);
+
+	int VBO_size = bufferHelper->getVertexBufferSize();
+	mesh3dref->setVertexNum(VBO_size / sizeof(float));
+	mesh3dref->setDrawType(GL_TRIANGLES);
 }
+
+

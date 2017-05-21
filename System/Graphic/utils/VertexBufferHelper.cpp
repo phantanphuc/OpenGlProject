@@ -35,15 +35,15 @@ void VertexBufferHelper::generateBuffer(int n, ...)
 			current_offset += 3;
 			break;
 		case COLOR:
-			offset_position = current_offset;
+			offset_color = current_offset;
 			current_offset += 3;
 			break;
 		case NORMAL:
-			offset_position = current_offset;
+			offset_normal = current_offset;
 			current_offset += 3;
 			break;
 		case TEXTURE:
-			offset_position = current_offset;
+			offset_texture = current_offset;
 			current_offset += 2;
 			break;
 		default:
@@ -99,14 +99,37 @@ void VertexBufferHelper::setVertexTexture(float * src, int n)
 void VertexBufferHelper::setSection(int n, ...)
 {
 	va_list vl;
+	int current_offset = 0;
 	va_start(vl, n);
 	sectionCount = n;
 	for (int i = 0; i < n;i++)
 	{
 		Section val = va_arg(vl, Section);
 		sectionList[i] = val;
+		switch (val)
+		{
+		case POSITION:
+			offset_position = current_offset;
+			current_offset += 3;
+			break;
+		case COLOR:
+			offset_color = current_offset;
+			current_offset += 3;
+			break;
+		case NORMAL:
+			offset_normal = current_offset;
+			current_offset += 3;
+			break;
+		case TEXTURE:
+			offset_texture = current_offset;
+			current_offset += 2;
+			break;
+		default:
+			break;
+		}
 	}
 	va_end(vl);
+	stride = current_offset;
 }
 
 void VertexBufferHelper::setIndexBufferRef(int * reference, int size)
@@ -144,5 +167,18 @@ int VertexBufferHelper::getIndexBufferSize()
 int VertexBufferHelper::getGetNumOfSection()
 {
 	return sectionCount;
+}
+
+int VertexBufferHelper::getStride()
+{
+	return stride;
+}
+
+int VertexBufferHelper::getSectionSize(int sectionIndex)
+{
+	if (sectionList[sectionIndex] == Section::TEXTURE) {
+		return 2;
+	}
+	return 3;
 }
 
