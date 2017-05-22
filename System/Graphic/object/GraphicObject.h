@@ -26,7 +26,7 @@ public:
 private:
 	std::vector<ComponentNode> ComponentList;
 };
-#endif
+
 
 template<typename component_Type>
 inline component_Type * GraphicObject::getComponent()
@@ -71,3 +71,5 @@ inline void GraphicObject::addComponent()
 
 	ComponentList.push_back(newnode);
 }
+
+#endif

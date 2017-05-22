@@ -119,6 +119,7 @@
     <ClCompile Include="System\Graphic\object\component\ComponentManager.cpp" />
     <ClCompile Include="System\Graphic\object\component\Mesh3d.cpp" />
     <ClCompile Include="System\Graphic\object\GraphicObject.cpp" />
+    <ClCompile Include="System\Graphic\object\ObjectManager.cpp" />
     <ClCompile Include="System\Graphic\OpenGlClass.cpp" />
     <ClCompile Include="System\Graphic\OpenglController.cpp" />
     <ClCompile Include="System\Graphic\utils\ShaderHelper.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="System\Graphic\object\component\ComponentManager.h" />
     <ClInclude Include="System\Graphic\object\component\Mesh3d.h" />
     <ClInclude Include="System\Graphic\object\GraphicObject.h" />
+    <ClInclude Include="System\Graphic\object\ObjectManager.h" />
     <ClInclude Include="System\Graphic\OpenGlClass.h" />
     <ClInclude Include="System\Graphic\OpenglController.h" />
     <ClInclude Include="System\Graphic\utils\ShaderHelper.h" />

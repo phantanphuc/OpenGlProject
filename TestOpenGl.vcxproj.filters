@@ -54,6 +54,9 @@
     <ClCompile Include="System\Graphic\utils\ShaderHelper.cpp">
       <Filter>System\Graphic\utils</Filter>
     </ClCompile>
+    <ClCompile Include="System\Graphic\object\ObjectManager.cpp">
+      <Filter>System\Graphic\object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System\MainWindow.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="System\Graphic\utils\ShaderHelper.h">
       <Filter>System\Graphic\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\object\ObjectManager.h">
+      <Filter>System\Graphic\object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,9 +2,9 @@
 
 
 MainWindow* m_main_instance = nullptr;
-GraphicObject* obj;
-void testeee() {
 
+void testeee() {
+	GraphicObject* obj;
 	obj = new GraphicObject;
 	obj->addComponent<Mesh3d>();
 	Mesh3d* mesh3dref = obj->getComponent<Mesh3d>();
@@ -47,7 +47,7 @@ void testeee() {
 
 	OpenglController::getInstance()->bindBuffer(mesh3dref, &helper);
 
-
+	ObjectManager::getInstance()->addNode(obj);
 
 
 }
@@ -158,7 +158,7 @@ void MainWindow::render()
 	glClearColor(0.7f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	obj->Execute();
+	ObjectManager::getInstance()->ExecuteObject();
 }
 
 

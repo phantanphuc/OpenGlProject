@@ -5,8 +5,9 @@
 
 
 #include <glew.h>
-#include "object\GraphicObject.h"
 #include "utils\ShaderHelper.h"
+
+#include "object\ObjectManager.h"
 
 class GraphicClass {
 public:
