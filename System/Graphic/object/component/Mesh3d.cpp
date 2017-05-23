@@ -5,7 +5,9 @@ Mesh3d::Mesh3d(){
 }
 
 Mesh3d::~Mesh3d(){
-
+	glDeleteProgram(shaderProgram);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
 }
 
 void Mesh3d::setVertexShaderId(GLuint id)

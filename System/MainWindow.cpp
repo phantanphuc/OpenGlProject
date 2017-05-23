@@ -3,57 +3,8 @@
 
 MainWindow* m_main_instance = nullptr;
 
-void testeee() {
-	GraphicObject* obj;
-	obj = new GraphicObject;
-	obj->addComponent<Mesh3d>();
-	Mesh3d* mesh3dref = obj->getComponent<Mesh3d>();
-
-	ShaderHelper* objShaderHelper = new  ShaderHelper;
-
-	GLfloat vertices[] = {
-		0.5f,  0.5f, 0.0f,  // Top Right
-		0.5f, -0.5f, 0.0f,  // Bottom Right
-		-0.5f, -0.5f, 0.0f,  // Bottom Left
-		-0.5f,  0.5f, 0.0f   // Top Left 
-	};
-	GLuint indices[] = {  
-		0, 1, 3, 
-		1, 2, 3 
-	};
-
-	objShaderHelper->useShaderFromFile("Resource/Shaders/FirstVertexShader.glsl", ShaderType::VERTEXSHADER);
-	objShaderHelper->useShaderFromFile("Resource/Shaders/FirstFragmentShader.glsl", ShaderType::FRAGMENTSHADER);
-
-
-	mesh3dref->setVertexShaderId(OpenglController::getInstance()->
-		CompileVertexShader(objShaderHelper->getVertexShader()));
-	mesh3dref->setFragmentShaderId(OpenglController::getInstance()->
-		CompileFragmentShader(objShaderHelper->getFragmentShader()));
-	OpenglController::getInstance()->createShaderProgram(mesh3dref);
-
-	
-	mesh3dref->generateVAO_VBO_EBO();
-
-	VertexBufferHelper helper = VertexBufferHelper();
-
-	helper.generateBuffer(2, 4, Section::POSITION);
-	helper.setVertexPosition(vertices, 0);
-	helper.setVertexPosition(vertices + 3, 1);
-	helper.setVertexPosition(vertices + 6, 2);
-	helper.setVertexPosition(vertices + 9, 3);
-
-	helper.setIndexBufferRef((int*)indices, sizeof(indices));
-
-	OpenglController::getInstance()->bindBuffer(mesh3dref, &helper);
-
-	ObjectManager::getInstance()->addNode(obj);
-
-
-}
-
 MainWindow::MainWindow() {
-
+	
 }
 
 MainWindow::~MainWindow() {
@@ -95,10 +46,12 @@ void MainWindow::init()
 	);
 
 	m_graphic->init(mainwindow_handle);
-	
-	testeee();
+
+	m_graphic->start();
 
 	ShowWindow(mainwindow_handle, SW_SHOW);
+
+	ready = true;
 
 }
 
@@ -110,7 +63,7 @@ void MainWindow::run()
 
 
 
-	init();
+	
 
 	while (msg.message != WM_QUIT)
 	{
@@ -137,6 +90,7 @@ MainWindow * MainWindow::getInstance()
 {
 	if (m_main_instance == nullptr) {
 		m_main_instance = new MainWindow;
+		m_main_instance->init();
 	}
 	return m_main_instance;
 }
@@ -158,7 +112,7 @@ void MainWindow::render()
 	glClearColor(0.7f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	ObjectManager::getInstance()->ExecuteObject();
+	m_graphic->render();
 }
 
 
@@ -183,6 +137,7 @@ LRESULT MainWindow::m_wndproc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 
 
 		InvalidateRect(hWnd, NULL, false);
+		
 
 		break;
 	}

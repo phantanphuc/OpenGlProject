@@ -22,6 +22,12 @@
     <Filter Include="Resource\Shaders">
       <UniqueIdentifier>{8ae5bde0-5879-4be1-9ae2-f7e76f6488ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scenes">
+      <UniqueIdentifier>{3ce821e2-9935-4146-8c82-ccafbe20eea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Scene">
+      <UniqueIdentifier>{0cacd715-e969-4de0-9966-c214da7c8ada}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="System\main.cpp">
@@ -57,6 +63,21 @@
     <ClCompile Include="System\Graphic\object\ObjectManager.cpp">
       <Filter>System\Graphic\object</Filter>
     </ClCompile>
+    <ClCompile Include="System\Graphic\object\component\ComponentCamera.cpp">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\TestScene.cpp">
+      <Filter>scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="System\SceneManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Scene\BaseScene.cpp">
+      <Filter>System\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\utils\ObjectHelper.cpp">
+      <Filter>System\Graphic\utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System\MainWindow.h">
@@ -91,6 +112,21 @@
     </ClInclude>
     <ClInclude Include="System\Graphic\object\ObjectManager.h">
       <Filter>System\Graphic\object</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\object\component\ComponentCamera.h">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\TestScene.h">
+      <Filter>scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SceneManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Scene\BaseScene.h">
+      <Filter>System\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\utils\ObjectHelper.h">
+      <Filter>System\Graphic\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

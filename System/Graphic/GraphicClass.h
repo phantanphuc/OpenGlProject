@@ -5,9 +5,7 @@
 
 
 #include <glew.h>
-#include "utils\ShaderHelper.h"
-
-#include "object\ObjectManager.h"
+#include "System\SceneManager.h"
 
 class GraphicClass {
 public:
@@ -18,6 +16,10 @@ public:
 
 	HDC* getHDC();
 	HGLRC* getHGLRC();
+
+	void render();
+	void start();
+
 private:
 	HWND		m_hwnd;
 	int         pf;
@@ -26,6 +28,6 @@ private:
 	PIXELFORMATDESCRIPTOR pfd;
 	
 	void initOpenGl();
-	void render();
+	
 };
 #endif

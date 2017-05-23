@@ -14,8 +14,6 @@ public:
 	ObjectManager();
 	~ObjectManager();
 
-	static ObjectManager* getInstance();
-
 	void addNode(GraphicObject* obj);
 
 	void ExecuteObject();

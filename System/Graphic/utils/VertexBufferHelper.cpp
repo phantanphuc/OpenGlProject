@@ -12,7 +12,9 @@ VertexBufferHelper::VertexBufferHelper(){
 }
 
 VertexBufferHelper::~VertexBufferHelper(){
-
+	if (using_dynamically_located_vertex_buffer) {
+		delete[] vertexBuffer;
+	}
 }
 
 void VertexBufferHelper::generateBuffer(int n, ...)
@@ -57,6 +59,7 @@ void VertexBufferHelper::generateBuffer(int n, ...)
 
 	stride = current_offset;
 	vertexBuffer = new float[num_of_vertex * current_offset];
+	using_dynamically_located_vertex_buffer = true;
 	vertexBufferSize = num_of_vertex * current_offset * 4;
 }
 
@@ -96,7 +99,7 @@ void VertexBufferHelper::setVertexTexture(float * src, int n)
 		8);
 }
 
-void VertexBufferHelper::setSection(int n, ...)
+void VertexBufferHelper::setSection_Arg(int n, ...)
 {
 	va_list vl;
 	int current_offset = 0;
@@ -129,6 +132,40 @@ void VertexBufferHelper::setSection(int n, ...)
 		}
 	}
 	va_end(vl);
+	stride = current_offset;
+}
+
+void VertexBufferHelper::setSection_Arr(int n, Section * arr)
+{
+	int current_offset = 0;
+	sectionCount = n;
+	for (int i = 0; i < n;i++)
+	{
+		Section val = arr[i];
+
+		sectionList[i] = val;
+		switch (val)
+		{
+		case POSITION:
+			offset_position = current_offset;
+			current_offset += 3;
+			break;
+		case COLOR:
+			offset_color = current_offset;
+			current_offset += 3;
+			break;
+		case NORMAL:
+			offset_normal = current_offset;
+			current_offset += 3;
+			break;
+		case TEXTURE:
+			offset_texture = current_offset;
+			current_offset += 2;
+			break;
+		default:
+			break;
+		}
+	}
 	stride = current_offset;
 }
 

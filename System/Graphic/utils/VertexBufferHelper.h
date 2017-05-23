@@ -23,8 +23,8 @@ public:
 	/*
 	for setBuffer only, generateBuffer will automatically setSection
 	*/
-	void setSection(int n, ...);
-	
+	void setSection_Arg(int n, ...);
+	void setSection_Arr(int n, Section* arr);
 
 	void setIndexBufferRef(int* reference, int size);
 	void setVertexBufferRef(float* reference, int size);
@@ -49,6 +49,8 @@ public:
 private:
 	float* vertexBuffer;
 	int* indexBuffer;
+
+	bool using_dynamically_located_vertex_buffer = false;
 
 	int offset_position;
 	int offset_color;

@@ -8,6 +8,7 @@ GraphicClass::~GraphicClass(){
 
 }
 
+
 void GraphicClass::init(HWND hwnd)
 {
 	
@@ -64,6 +65,12 @@ void GraphicClass::initOpenGl()
 }
 
 void GraphicClass::render()
+{
+	SceneManager::getInstance()->renderCurrentScene();
+
+}
+
+void GraphicClass::start()
 {
 }
 

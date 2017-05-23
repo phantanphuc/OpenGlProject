@@ -41,9 +41,6 @@ private:
 	GLuint VBO;
 	GLuint EBO;
 
-	GLfloat* vertices;
-	GLuint * indices;
-
 	int num_of_vertex;
 	GLenum draw_mode;
 };

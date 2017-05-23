@@ -115,20 +115,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="scenes\TestScene.cpp" />
     <ClCompile Include="System\Graphic\GraphicClass.cpp" />
+    <ClCompile Include="System\Graphic\object\component\ComponentCamera.cpp" />
     <ClCompile Include="System\Graphic\object\component\ComponentManager.cpp" />
     <ClCompile Include="System\Graphic\object\component\Mesh3d.cpp" />
     <ClCompile Include="System\Graphic\object\GraphicObject.cpp" />
     <ClCompile Include="System\Graphic\object\ObjectManager.cpp" />
     <ClCompile Include="System\Graphic\OpenGlClass.cpp" />
     <ClCompile Include="System\Graphic\OpenglController.cpp" />
+    <ClCompile Include="System\Graphic\utils\ObjectHelper.cpp" />
     <ClCompile Include="System\Graphic\utils\ShaderHelper.cpp" />
     <ClCompile Include="System\Graphic\utils\VertexBufferHelper.cpp" />
     <ClCompile Include="System\main.cpp" />
     <ClCompile Include="System\MainWindow.cpp" />
+    <ClCompile Include="System\SceneManager.cpp" />
+    <ClCompile Include="System\Scene\BaseScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="scenes\TestScene.h" />
     <ClInclude Include="System\Graphic\GraphicClass.h" />
+    <ClInclude Include="System\Graphic\object\component\ComponentCamera.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentHeader.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentManager.h" />
     <ClInclude Include="System\Graphic\object\component\Mesh3d.h" />
@@ -136,9 +143,12 @@
     <ClInclude Include="System\Graphic\object\ObjectManager.h" />
     <ClInclude Include="System\Graphic\OpenGlClass.h" />
     <ClInclude Include="System\Graphic\OpenglController.h" />
+    <ClInclude Include="System\Graphic\utils\ObjectHelper.h" />
     <ClInclude Include="System\Graphic\utils\ShaderHelper.h" />
     <ClInclude Include="System\Graphic\utils\VertexBufferHelper.h" />
     <ClInclude Include="System\MainWindow.h" />
+    <ClInclude Include="System\SceneManager.h" />
+    <ClInclude Include="System\Scene\BaseScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\Shaders\FirstFragmentShader.glsl" />

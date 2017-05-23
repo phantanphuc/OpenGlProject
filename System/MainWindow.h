@@ -3,7 +3,7 @@
 
 #include <Windows.h>
 #include "Graphic\GraphicClass.h"
-#include "Graphic\OpenglController.h"
+#include "SceneManager.h"
 
 
 class MainWindow {
@@ -19,6 +19,8 @@ public:
 	LRESULT m_wndproc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 private:
 	
+	bool ready = false;
+
 	HWND mainwindow_handle;
 	HINSTANCE hinstance;
 

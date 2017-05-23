@@ -7,16 +7,15 @@ ObjectManager::ObjectManager(){
 }
 
 ObjectManager::~ObjectManager(){
-
-}
-
-ObjectManager * ObjectManager::getInstance()
-{
-	if (m_objectmanager_instance == nullptr) {
-		m_objectmanager_instance = new ObjectManager;
+	while (object_list != nullptr) {
+		ObjectNode* delptr = object_list;
+		object_list = object_list->next;
+		delete delptr->obj;
+		delete delptr;
 	}
-	return m_objectmanager_instance;
 }
+
+
 
 void ObjectManager::addNode(GraphicObject * obj)
 {
