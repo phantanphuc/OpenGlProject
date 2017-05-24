@@ -13,7 +13,14 @@ public:
 
 	virtual void createScene() = 0;
 
+	GraphicObject* createCamera();
+	void setCameraRef(ComponentCamera* camera);
+
+	void useDefaultCamera();
+
 protected:
+	ComponentCamera* camera_ref;
+
 	ObjectManager* objectManager;
 };
 #endif

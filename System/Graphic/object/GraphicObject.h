@@ -36,6 +36,9 @@ inline component_Type * GraphicObject::getComponent()
 	if (std::is_same<component_Type, Mesh3d>::value) {
 		expected_type = ComponentType::MESH3D;
 	}
+	if (std::is_same<component_Type, ComponentCamera>::value) {
+		expected_type = ComponentType::CAMERA;
+	}
 
 	for (std::vector<ComponentNode>::iterator it = ComponentList.begin(); it != ComponentList.end(); ++it) {
 		if (it->type == expected_type) {
@@ -54,6 +57,9 @@ inline void GraphicObject::addComponent(component_Type * component)
 	if (std::is_same<component_Type, Mesh3d>::value) {
 		newnode.type = ComponentType::MESH3D;
 	}
+	if (std::is_same<component_Type, ComponentCamera>::value) {
+		newnode.type = ComponentType::CAMERA;
+	}
 
 	newnode.Component = (void*)component;
 	ComponentList.push_back(newnode);
@@ -67,6 +73,10 @@ inline void GraphicObject::addComponent()
 	if (std::is_same<component_Type, Mesh3d>::value) {
 		newnode.type = ComponentType::MESH3D;
 		newnode.Component = (void*) new Mesh3d();
+	}
+	if (std::is_same<component_Type, ComponentCamera>::value) {
+		newnode.type = ComponentType::CAMERA;
+		newnode.Component = (void*) new ComponentCamera();
 	}
 
 	ComponentList.push_back(newnode);

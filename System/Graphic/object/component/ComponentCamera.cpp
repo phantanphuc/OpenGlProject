@@ -1,6 +1,8 @@
 #include "ComponentCamera.h"
 #include <glm/gtc/matrix_transform.hpp>
 
+ComponentCamera* current_using_camera = nullptr;
+
 ComponentCamera::ComponentCamera(){
 
 }
@@ -35,4 +37,19 @@ void ComponentCamera::apply()
 	V = glm::lookAt(camera_position, camera_lookat, upVector);
 	P = glm::perspective(fovy, aspect, zNear, zFar);
 
+}
+
+void ComponentCamera::bindValue(GLuint shader_program_id)
+{
+	glUniform1f(glGetUniformLocation(shader_program_id, "myvar"), -0.5f);
+}
+
+void ComponentCamera::setCurrentCamera(ComponentCamera * camera)
+{
+	current_using_camera = camera;
+}
+
+ComponentCamera * ComponentCamera::getCurrentCamera()
+{
+	return current_using_camera;
 }

@@ -2,7 +2,7 @@
 #define __COMPONENTMANAGER_H__
 
 enum ComponentType {
-	MESH3D
+	MESH3D, CAMERA
 };
 
 struct ComponentNode {

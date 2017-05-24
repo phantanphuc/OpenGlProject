@@ -2,6 +2,9 @@
 #define __COMPONENTCAMERA_H__
 
 #include <glm/glm.hpp>
+#include <glew.h>
+
+#include "System\Graphic\GraphicDefinition.h"
 
 class ComponentCamera {
 public:
@@ -18,6 +21,12 @@ public:
 
 	void init();
 	void apply();
+
+	void bindValue(GLuint shader_id);
+
+	static void setCurrentCamera(ComponentCamera* camera);
+	static ComponentCamera* getCurrentCamera();
+
 private:
 
 	glm::vec3 camera_position;
@@ -31,5 +40,6 @@ private:
 	float aspect;
 	float zNear;
 	float zFar;
+
 };
 #endif

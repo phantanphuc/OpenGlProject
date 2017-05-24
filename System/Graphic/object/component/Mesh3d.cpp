@@ -87,9 +87,21 @@ void Mesh3d::setDrawType(GLenum type)
 	draw_mode = type;
 }
 
+
+
 void Mesh3d::render()
 {
 	glUseProgram(shaderProgram);
+	///////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////// BIND CAMERA ///////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+
+	ComponentCamera* camera = ComponentCamera::getCurrentCamera();
+	if (camera != nullptr) {
+		camera->bindValue(shaderProgram);
+	}
+
+
 	glBindVertexArray(VAO);
 	glDrawElements(draw_mode, num_of_vertex, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);

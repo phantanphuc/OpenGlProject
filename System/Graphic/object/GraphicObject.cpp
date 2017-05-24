@@ -13,6 +13,13 @@ GraphicObject::~GraphicObject(){
 			delete mesh3dref;
 			break;
 		}
+
+		case ComponentType::CAMERA: {
+			ComponentCamera* camera = (ComponentCamera*)it->Component;
+			delete camera;
+			break;
+		}
+
 		default:
 			break;
 		}
@@ -29,6 +36,13 @@ void GraphicObject::Execute()
 			mesh3dref->render();
 			break;
 		}
+
+		case ComponentType::CAMERA: {
+			//ComponentCamera* camera = (ComponentCamera*)it->Component;
+			//camera->render();
+			break;
+		}
+
 		default:
 			break;
 		}

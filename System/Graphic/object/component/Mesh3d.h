@@ -4,6 +4,7 @@
 #include <glew.h>
 
 #include "ComponentManager.h"
+#include "ComponentCamera.h"
 
 class Mesh3d {
 public:

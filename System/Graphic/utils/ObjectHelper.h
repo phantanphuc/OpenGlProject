@@ -5,12 +5,13 @@
 #include "System\Graphic\utils\ShaderHelper.h"
 #include "System\Graphic\OpenglController.h"
 #include "System\Graphic\object\ObjectManager.h"
+#include "System\Graphic\object\component\ComponentHeader.h"
 
 class ObjectHelper {
 public:
 	ObjectHelper();
 	~ObjectHelper();
-
+	
 	static GraphicObject* createSimpleMesh3dObject(
 		ShaderHelper* objShaderHelper, 
 		float* vertexBuffer, int vertexBufferSize,
