@@ -12,8 +12,10 @@ void TestScene::createScene()
 {
 
 
-	addTestObject2(0.1f);
-	addTestObject2(0.9f);
+	//addTestObject2(0.1f);
+	addTestObject2(0.5f);
+
+	useDefaultCamera();
 }
 
 void TestScene::addTestObject(float testvalue = 0.0f)
@@ -66,20 +68,24 @@ void TestScene::addTestObject(float testvalue = 0.0f)
 
 void TestScene::addTestObject2(float testvalue)
 {
+
+
 	GLfloat vertices[] = {
-		0.5f,  1.0f - testvalue, 0.0f,  // Top Right
-		0.5f, 0.5f - testvalue, 0.0f,  // Bottom Right
-		-0.5f, 0.5f - testvalue, 0.0f
+		// Positions         // Colors
+		0.5f,   1.0f - testvalue, 0.0f,   1.0f, 0.0f, 0.0f,  // Bottom Right
+		-0.5f, 0.0f - testvalue, 0.0f,   0.0f, 1.0f, 0.0f,  // Bottom Left
+		1.0f,   0.0f - testvalue, 0.0f,   0.0f, 0.0f, 1.0f   // Top 
 	};
+
 	GLuint indices[] = {
 		0, 1, 2
 	};
 
-	Section arr[] = { POSITION };
+	Section arr[] = { POSITION, COLOR };
 
 	ShaderHelper* objShaderHelper = new  ShaderHelper;
-	objShaderHelper->useShaderFromFile("Resource/Shaders/FirstVertexShader.glsl", ShaderType::VERTEXSHADER);
-	objShaderHelper->useShaderFromFile("Resource/Shaders/FirstFragmentShader.glsl", ShaderType::FRAGMENTSHADER);
+	objShaderHelper->useShaderFromFile("Resource/Shaders/VertexShaderColor.glsl", ShaderType::VERTEXSHADER);
+	objShaderHelper->useShaderFromFile("Resource/Shaders/FragmentShaderColor.glsl", ShaderType::FRAGMENTSHADER);
 
 	GraphicObject* obj = ObjectHelper::createSimpleMesh3dObject(
 		objShaderHelper,

@@ -127,6 +127,7 @@
     <ClCompile Include="System\Graphic\utils\ObjectHelper.cpp" />
     <ClCompile Include="System\Graphic\utils\ShaderHelper.cpp" />
     <ClCompile Include="System\Graphic\utils\VertexBufferHelper.cpp" />
+    <ClCompile Include="System\InputManager.cpp" />
     <ClCompile Include="System\main.cpp" />
     <ClCompile Include="System\MainWindow.cpp" />
     <ClCompile Include="System\SceneManager.cpp" />
@@ -135,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="scenes\TestScene.h" />
     <ClInclude Include="System\Graphic\GraphicClass.h" />
+    <ClInclude Include="System\Graphic\GraphicDefinition.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentCamera.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentHeader.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentManager.h" />
@@ -146,6 +148,7 @@
     <ClInclude Include="System\Graphic\utils\ObjectHelper.h" />
     <ClInclude Include="System\Graphic\utils\ShaderHelper.h" />
     <ClInclude Include="System\Graphic\utils\VertexBufferHelper.h" />
+    <ClInclude Include="System\InputManager.h" />
     <ClInclude Include="System\MainWindow.h" />
     <ClInclude Include="System\SceneManager.h" />
     <ClInclude Include="System\Scene\BaseScene.h" />
@@ -153,6 +156,8 @@
   <ItemGroup>
     <None Include="Resource\Shaders\FirstFragmentShader.glsl" />
     <None Include="Resource\Shaders\FirstVertexShader.glsl" />
+    <None Include="Resource\Shaders\FragmentShaderColor.glsl" />
+    <None Include="Resource\Shaders\VertexShaderColor.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

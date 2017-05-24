@@ -78,6 +78,9 @@
     <ClCompile Include="System\Graphic\utils\ObjectHelper.cpp">
       <Filter>System\Graphic\utils</Filter>
     </ClCompile>
+    <ClCompile Include="System\InputManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System\MainWindow.h">
@@ -128,12 +131,24 @@
     <ClInclude Include="System\Graphic\utils\ObjectHelper.h">
       <Filter>System\Graphic\utils</Filter>
     </ClInclude>
+    <ClInclude Include="System\Graphic\GraphicDefinition.h">
+      <Filter>System\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="System\InputManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\Shaders\FirstFragmentShader.glsl">
       <Filter>Resource\Shaders</Filter>
     </None>
     <None Include="Resource\Shaders\FirstVertexShader.glsl">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+    <None Include="Resource\Shaders\FragmentShaderColor.glsl">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+    <None Include="Resource\Shaders\VertexShaderColor.glsl">
       <Filter>Resource\Shaders</Filter>
     </None>
   </ItemGroup>
