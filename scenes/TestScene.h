@@ -16,6 +16,8 @@ public:
 
 	void updateScene();
 
+	void listenKeyboard(keymap* Keymap);
+
 private:
 	
 };

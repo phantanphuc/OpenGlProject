@@ -57,10 +57,29 @@ void TestScene::addTestObject2(float testvalue)
 
 void TestScene::updateScene()
 {
-	testObj->getComponent<Mesh3d>()->getSubComponentModel()
-		->translate( sin(testFloat), 0.0f, 0.0f);
+	//testObj->getComponent<Mesh3d>()->getSubComponentModel()
+	//	->translate( sin(testFloat), 0.0f, 0.0f);
+	//testFloat += 3.1415926535f / 180.0f;
 
-	testFloat += 3.1415926535f / 180.0f;
+}
 
+void TestScene::listenKeyboard(keymap * Keymap)
+{
+	if (Keymap->getKeyState(VK_UP)) {
+		testObj->getComponent<Mesh3d>()->getSubComponentModel()
+			->translate( 0.0f, 0.05f, 0.0f);
+	}
+	if (Keymap->getKeyState(VK_DOWN)) {
+		testObj->getComponent<Mesh3d>()->getSubComponentModel()
+			->translate(0.0f, -0.05f, 0.0f);
+	}
+	if (Keymap->getKeyState(VK_LEFT)) {
+		testObj->getComponent<Mesh3d>()->getSubComponentModel()
+			->translate(-0.05f, 0.0f, 0.0f);
+	}
+	if (Keymap->getKeyState(VK_RIGHT)) {
+		testObj->getComponent<Mesh3d>()->getSubComponentModel()
+			->translate(0.05f, 0.0f, 0.0f);
+	}
 }
 

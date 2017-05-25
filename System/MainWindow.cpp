@@ -149,6 +149,14 @@ LRESULT MainWindow::m_wndproc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
+
+	case WM_KEYDOWN:
+		InputManager::getInstance()->keydown(wParam);
+		break;
+	case WM_KEYUP:
+		InputManager::getInstance()->keyup(wParam);
+		break;
+
 	default:
 		return DefWindowProc(hWnd, uMsg, wParam, lParam);
 	}

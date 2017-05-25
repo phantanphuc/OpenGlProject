@@ -3,7 +3,7 @@
 InputManager* m_instance_inputManager = nullptr;
 
 InputManager::InputManager(){
-
+	init();
 }
 
 InputManager::~InputManager(){
@@ -25,17 +25,27 @@ void InputManager::init()
 
 void InputManager::keyup(int keycode)
 {
-	keymap[keycode] = false;
+	map.map[keycode] = false;
 }
 
 void InputManager::keydown(int keycode)
 {
-	keymap[keycode] = true;
+	map.map[keycode] = true;
 }
 
 void InputManager::reset()
 {
 	for (int i = 0; i < KEYMAP_SIZE; ++i) {
-		keymap[i] = false;
+		map.map[i] = false;
 	}
+}
+
+keymap * InputManager::getKeyMap()
+{
+	return &map;
+}
+
+bool keymap::getKeyState(int key_id)
+{
+	return map[key_id];
 }

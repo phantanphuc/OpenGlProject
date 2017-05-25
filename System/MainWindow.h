@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include "Graphic\GraphicClass.h"
 #include "SceneManager.h"
-
+#include "InputManager.h"
 
 class MainWindow {
 public:

@@ -1,8 +1,18 @@
 #ifndef __INPUTMANAGER_H__
 #define __INPUTMANAGER_H__
 
+#include <Windows.h>
+
 #define KEYMAP_SIZE 255
 
+struct keymap
+{
+public:
+	bool getKeyState(int key_id);
+private:
+	bool map[KEYMAP_SIZE];
+	friend class InputManager;
+};
 
 class InputManager {
 public:
@@ -18,9 +28,13 @@ public:
 
 	void reset();
 
+	keymap * getKeyMap();
+
 private:
 
-	bool keymap[KEYMAP_SIZE];
+	keymap map;
+
+	
 
 };
 #endif

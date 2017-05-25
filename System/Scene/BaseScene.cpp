@@ -17,11 +17,14 @@ void BaseScene::initScene()
 
 void BaseScene::renderScene()
 {
+	listenKeyboard((InputManager::getInstance())->getKeyMap());
 	updateScene();
 	objectManager->ExecuteObject();
 }
 
 void BaseScene::updateScene(){}
+
+void BaseScene::listenKeyboard(keymap * Keymap){}
 
 GraphicObject * BaseScene::createCamera()
 {

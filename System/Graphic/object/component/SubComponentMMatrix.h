@@ -14,6 +14,9 @@ public:
 
 	void updateMMatrix();
 
+	void setTranslate(float x, float y, float z);
+	void setTranslate(glm::vec3 trans);
+
 	void translate(float x, float y, float z);
 	void translate(glm::vec3 trans);
 

@@ -29,15 +29,27 @@ void SubComponentMMatrix::updateMMatrix()
 	Model_matrix = glm::translate(glm::mat4(1.f), translateVector);
 }
 
-void SubComponentMMatrix::translate(float x, float y, float z)
+void SubComponentMMatrix::setTranslate(float x, float y, float z)
 {
 	translateVector = glm::vec3(x, y, z);
 	updateMMatrix();
 }
 
-void SubComponentMMatrix::translate(glm::vec3 trans)
+void SubComponentMMatrix::setTranslate(glm::vec3 trans)
 {
 	translateVector = trans;
+	updateMMatrix();
+}
+
+void SubComponentMMatrix::translate(float x, float y, float z)
+{
+	translateVector += glm::vec3(x, y, z);
+	updateMMatrix();
+}
+
+void SubComponentMMatrix::translate(glm::vec3 trans)
+{
+	translateVector += trans;
 	updateMMatrix();
 }
 

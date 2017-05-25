@@ -2,6 +2,7 @@
 #define __BASESCENE_H__
 
 #include "System\Graphic\utils\ObjectHelper.h"
+#include "System\InputManager.h"
 
 class BaseScene {
 public:
@@ -11,14 +12,20 @@ public:
 	void initScene();
 	void renderScene();
 
+
+	GraphicObject* createCamera();
+	void setCameraRef(ComponentCamera* camera);
+	void useDefaultCamera();
+
+	////////////////////////////////////////////////
+	//////////////// AWAIT OVERRIDE ////////////////
+	////////////////////////////////////////////////
+
 	virtual void updateScene();
 
 	virtual void createScene() = 0;
 
-	GraphicObject* createCamera();
-	void setCameraRef(ComponentCamera* camera);
-
-	void useDefaultCamera();
+	virtual void listenKeyboard(keymap* Keymap);
 
 protected:
 	ComponentCamera* camera_ref;
