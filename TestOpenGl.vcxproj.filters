@@ -81,6 +81,9 @@
     <ClCompile Include="System\InputManager.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="System\Graphic\object\component\SubComponentMMatrix.cpp">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System\MainWindow.h">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="System\InputManager.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\object\component\SubComponentMMatrix.h">
+      <Filter>System\Graphic\object\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

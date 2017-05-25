@@ -120,6 +120,7 @@
     <ClCompile Include="System\Graphic\object\component\ComponentCamera.cpp" />
     <ClCompile Include="System\Graphic\object\component\ComponentManager.cpp" />
     <ClCompile Include="System\Graphic\object\component\Mesh3d.cpp" />
+    <ClCompile Include="System\Graphic\object\component\SubComponentMMatrix.cpp" />
     <ClCompile Include="System\Graphic\object\GraphicObject.cpp" />
     <ClCompile Include="System\Graphic\object\ObjectManager.cpp" />
     <ClCompile Include="System\Graphic\OpenGlClass.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="System\Graphic\object\component\ComponentHeader.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentManager.h" />
     <ClInclude Include="System\Graphic\object\component\Mesh3d.h" />
+    <ClInclude Include="System\Graphic\object\component\SubComponentMMatrix.h" />
     <ClInclude Include="System\Graphic\object\GraphicObject.h" />
     <ClInclude Include="System\Graphic\object\ObjectManager.h" />
     <ClInclude Include="System\Graphic\OpenGlClass.h" />

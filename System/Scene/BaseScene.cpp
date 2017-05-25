@@ -17,9 +17,11 @@ void BaseScene::initScene()
 
 void BaseScene::renderScene()
 {
-	
+	updateScene();
 	objectManager->ExecuteObject();
 }
+
+void BaseScene::updateScene(){}
 
 GraphicObject * BaseScene::createCamera()
 {
@@ -45,4 +47,9 @@ void BaseScene::setCameraRef(ComponentCamera * camera)
 void BaseScene::useDefaultCamera()
 {
 	ComponentCamera::setCurrentCamera(camera_ref);
+}
+
+void BaseScene::addChildObj(GraphicObject * obj)
+{
+	objectManager->addNode(obj);
 }

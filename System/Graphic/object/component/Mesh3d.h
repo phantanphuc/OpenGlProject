@@ -3,8 +3,10 @@
 
 #include <glew.h>
 
+
 #include "ComponentManager.h"
 #include "ComponentCamera.h"
+#include "SubComponentMMatrix.h"
 
 class Mesh3d {
 public:
@@ -33,6 +35,8 @@ public:
 
 	void render();
 
+	SubComponentMMatrix* getSubComponentModel();
+
 private:
 	GLuint vertexShader;
 	GLuint fragmentShader;
@@ -44,5 +48,10 @@ private:
 
 	int num_of_vertex;
 	GLenum draw_mode;
+
+	SubComponentMMatrix* M_matrix = nullptr;
+
+	void bindModelMatrix();
+
 };
 #endif

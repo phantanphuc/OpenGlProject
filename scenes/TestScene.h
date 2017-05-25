@@ -10,8 +10,11 @@ public:
 
 	void createScene();
 
-	void addTestObject(float testvalue);
 	void addTestObject2(float testvalue);
+	GraphicObject* testObj;
+	float testFloat = 0;
+
+	void updateScene();
 
 private:
 	

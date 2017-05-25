@@ -11,6 +11,8 @@ public:
 	void initScene();
 	void renderScene();
 
+	virtual void updateScene();
+
 	virtual void createScene() = 0;
 
 	GraphicObject* createCamera();
@@ -22,5 +24,7 @@ protected:
 	ComponentCamera* camera_ref;
 
 	ObjectManager* objectManager;
+
+	void addChildObj(GraphicObject* obj);
 };
 #endif

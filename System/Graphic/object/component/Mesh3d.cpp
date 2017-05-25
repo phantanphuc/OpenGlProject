@@ -1,13 +1,15 @@
 #include "Mesh3d.h"
 
 Mesh3d::Mesh3d(){
-
+	M_matrix = new SubComponentMMatrix;
 }
 
 Mesh3d::~Mesh3d(){
 	glDeleteProgram(shaderProgram);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
+
+	delete M_matrix;
 }
 
 void Mesh3d::setVertexShaderId(GLuint id)
@@ -100,9 +102,27 @@ void Mesh3d::render()
 	if (camera != nullptr) {
 		camera->bindValue(shaderProgram);
 	}
-
+	bindModelMatrix();
 
 	glBindVertexArray(VAO);
 	glDrawElements(draw_mode, num_of_vertex, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
+}
+
+SubComponentMMatrix * Mesh3d::getSubComponentModel()
+{
+	return M_matrix;
+}
+
+void Mesh3d::bindModelMatrix()
+{
+	if (M_matrix != nullptr) {
+		glm::mat4x4 ModelMatrix = M_matrix->getTranslateMatrix();
+		glUniform1f(glGetUniformLocation(shaderProgram, "myvar"), -0.5f);
+		glUniformMatrix4fv(
+			glGetUniformLocation(shaderProgram, IDENTIFICATION_SHADER_TRANSLATE_MATRIX),
+			1, 
+			false,								// transpose
+			glm::value_ptr(ModelMatrix));		// ptr
+	}
 }
