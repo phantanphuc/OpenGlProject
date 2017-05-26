@@ -2,6 +2,7 @@
 #define __COMPONENTCAMERA_H__
 
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <glew.h>
 
 #include "System\Graphic\GraphicDefinition.h"
@@ -16,6 +17,8 @@ public:
 		glm::vec3 const & center,
 		glm::vec3 const & up
 	);
+
+	void lookat_orbital(float R, float angle_Oxz, float angle_Oy);
 
 	void perspective(float pfovy, float paspect, float pzNear, float pzFar);
 

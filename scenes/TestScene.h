@@ -10,9 +10,7 @@ public:
 
 	void createScene();
 
-	void addTestObject2(float testvalue);
-	GraphicObject* testObj;
-	float testFloat = 0;
+	
 
 	void updateScene();
 
@@ -20,5 +18,12 @@ public:
 
 private:
 	
+	void addTestObject2(float testvalue);
+	GraphicObject* testObj;
+	float testFloat = 0;
+
+	float angle_Oxz = 45;
+	float angle_Oy = 45;
+	float R = 5;
 };
 #endif

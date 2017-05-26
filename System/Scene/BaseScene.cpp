@@ -37,6 +37,8 @@ GraphicObject * BaseScene::createCamera()
 	camera_ref->lookat(glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	camera_ref->perspective(1, 1, 0.1, 10);
 
+	camera_ref->perspective(glm::radians(30.0f), 1, 1, 2500);
+
 	camera_ref->apply();
 
 	return obj;

@@ -10,9 +10,6 @@ SubComponentMMatrix::SubComponentMMatrix(){
 
 	glm::mat4 ViewTranslate = glm::translate(glm::mat4(1.f), translateVector);
 
-	int m = 0;
-	m++;
-	
 }
 
 SubComponentMMatrix::~SubComponentMMatrix(){

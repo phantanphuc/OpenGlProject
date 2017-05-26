@@ -61,10 +61,14 @@ void TestScene::updateScene()
 	//	->translate( sin(testFloat), 0.0f, 0.0f);
 	//testFloat += 3.1415926535f / 180.0f;
 
+	camera_ref->lookat_orbital(R, glm::radians(angle_Oxz), glm::radians(angle_Oy));
+	camera_ref->apply();
+
 }
 
 void TestScene::listenKeyboard(keymap * Keymap)
 {
+	/*
 	if (Keymap->getKeyState(VK_UP)) {
 		testObj->getComponent<Mesh3d>()->getSubComponentModel()
 			->translate( 0.0f, 0.05f, 0.0f);
@@ -80,6 +84,19 @@ void TestScene::listenKeyboard(keymap * Keymap)
 	if (Keymap->getKeyState(VK_RIGHT)) {
 		testObj->getComponent<Mesh3d>()->getSubComponentModel()
 			->translate(0.05f, 0.0f, 0.0f);
+	}
+	*/
+	if (Keymap->getKeyState(VK_UP)) {
+		angle_Oy += 1;
+	}
+	if (Keymap->getKeyState(VK_DOWN)) {
+		angle_Oy -= 1;
+	}
+	if (Keymap->getKeyState(VK_LEFT)) {
+		angle_Oxz -= 1;
+	}
+	if (Keymap->getKeyState(VK_RIGHT)) {
+		angle_Oxz += 1;
 	}
 }
 
