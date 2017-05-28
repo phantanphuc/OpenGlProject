@@ -104,6 +104,13 @@ void Mesh3d::render()
 	}
 	bindModelMatrix();
 
+	/////////////////////
+	
+
+
+	//////////////////////
+
+
 	glBindVertexArray(VAO);
 	glDrawElements(draw_mode, num_of_vertex, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);

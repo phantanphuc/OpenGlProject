@@ -6,6 +6,7 @@
 
 #include <glew.h>
 #include "System\SceneManager.h"
+#include "DeviL\IL\il.h"
 
 class GraphicClass {
 public:

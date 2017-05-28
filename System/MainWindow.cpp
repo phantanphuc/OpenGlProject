@@ -53,6 +53,7 @@ void MainWindow::init()
 
 	ready = true;
 
+	limiter = new FPSLimiter;
 }
 
 void MainWindow::run()
@@ -63,6 +64,8 @@ void MainWindow::run()
 
 
 
+	limiter->setFPS(FPS);
+	limiter->start();
 	
 
 	while (msg.message != WM_QUIT)
@@ -78,6 +81,7 @@ void MainWindow::run()
 
 
 		}
+		
 	}
 
 }
@@ -110,7 +114,7 @@ void MainWindow::render()
 {
 
 	glClearColor(0.7f, 0.3f, 0.3f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	m_graphic->render();
 }
@@ -138,7 +142,7 @@ LRESULT MainWindow::m_wndproc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 
 		InvalidateRect(hWnd, NULL, false);
 		
-
+		limiter->waitForFrame();
 		break;
 	}
 

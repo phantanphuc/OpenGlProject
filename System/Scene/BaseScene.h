@@ -4,6 +4,8 @@
 #include "System\Graphic\utils\ObjectHelper.h"
 #include "System\InputManager.h"
 
+#include "System\Graphic\TextureManager.h"
+
 class BaseScene {
 public:
 	BaseScene();

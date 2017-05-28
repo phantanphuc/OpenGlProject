@@ -7,6 +7,7 @@
 #include "ComponentManager.h"
 #include "ComponentCamera.h"
 #include "SubComponentMMatrix.h"
+#include "DeviL\IL\il.h"
 
 class Mesh3d {
 public:

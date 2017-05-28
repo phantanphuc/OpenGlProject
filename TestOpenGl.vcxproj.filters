@@ -84,6 +84,15 @@
     <ClCompile Include="System\Graphic\object\component\SubComponentMMatrix.cpp">
       <Filter>System\Graphic\object\Component</Filter>
     </ClCompile>
+    <ClCompile Include="System\Graphic\object\component\SubcomponentTexture.cpp">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Graphic\TextureManager.cpp">
+      <Filter>System\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="System\FPSLimiter.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System\MainWindow.h">
@@ -143,6 +152,15 @@
     <ClInclude Include="System\Graphic\object\component\SubComponentMMatrix.h">
       <Filter>System\Graphic\object\Component</Filter>
     </ClInclude>
+    <ClInclude Include="System\Graphic\object\component\SubcomponentTexture.h">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\TextureManager.h">
+      <Filter>System\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="System\FPSLimiter.h">
+      <Filter>System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\Shaders\FirstFragmentShader.glsl">
@@ -155,6 +173,12 @@
       <Filter>Resource\Shaders</Filter>
     </None>
     <None Include="Resource\Shaders\VertexShaderColor.glsl">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+    <None Include="Resource\Shaders\TexturePS.glsl">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+    <None Include="Resource\Shaders\TextureVS.glsl">
       <Filter>Resource\Shaders</Filter>
     </None>
   </ItemGroup>

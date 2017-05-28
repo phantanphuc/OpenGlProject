@@ -1,10 +1,14 @@
 #ifndef __MAINWINDOW_H__
 #define __MAINWINDOW_H__
 
+#define FPS 55
+
 #include <Windows.h>
 #include "Graphic\GraphicClass.h"
 #include "SceneManager.h"
 #include "InputManager.h"
+
+#include "FPSLimiter.h"
 
 class MainWindow {
 public:
@@ -37,6 +41,8 @@ private:
 	GraphicClass* m_graphic;
 	
 	void render();
+
+	FPSLimiter* limiter;
 
 };
 

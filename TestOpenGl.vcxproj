@@ -77,8 +77,8 @@
       <AdditionalIncludeDirectories>$(ProjectDir)external_lib;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glew32.lib;OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)external_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;OpenGL32.Lib;DevIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)external_lib;$(ProjectDir)external_lib\DeviL\library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -116,15 +116,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="scenes\TestScene.cpp" />
+    <ClCompile Include="System\FPSLimiter.cpp" />
     <ClCompile Include="System\Graphic\GraphicClass.cpp" />
     <ClCompile Include="System\Graphic\object\component\ComponentCamera.cpp" />
     <ClCompile Include="System\Graphic\object\component\ComponentManager.cpp" />
     <ClCompile Include="System\Graphic\object\component\Mesh3d.cpp" />
     <ClCompile Include="System\Graphic\object\component\SubComponentMMatrix.cpp" />
+    <ClCompile Include="System\Graphic\object\component\SubcomponentTexture.cpp" />
     <ClCompile Include="System\Graphic\object\GraphicObject.cpp" />
     <ClCompile Include="System\Graphic\object\ObjectManager.cpp" />
     <ClCompile Include="System\Graphic\OpenGlClass.cpp" />
     <ClCompile Include="System\Graphic\OpenglController.cpp" />
+    <ClCompile Include="System\Graphic\TextureManager.cpp" />
     <ClCompile Include="System\Graphic\utils\ObjectHelper.cpp" />
     <ClCompile Include="System\Graphic\utils\ShaderHelper.cpp" />
     <ClCompile Include="System\Graphic\utils\VertexBufferHelper.cpp" />
@@ -136,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scenes\TestScene.h" />
+    <ClInclude Include="System\FPSLimiter.h" />
     <ClInclude Include="System\Graphic\GraphicClass.h" />
     <ClInclude Include="System\Graphic\GraphicDefinition.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentCamera.h" />
@@ -143,10 +147,12 @@
     <ClInclude Include="System\Graphic\object\component\ComponentManager.h" />
     <ClInclude Include="System\Graphic\object\component\Mesh3d.h" />
     <ClInclude Include="System\Graphic\object\component\SubComponentMMatrix.h" />
+    <ClInclude Include="System\Graphic\object\component\SubcomponentTexture.h" />
     <ClInclude Include="System\Graphic\object\GraphicObject.h" />
     <ClInclude Include="System\Graphic\object\ObjectManager.h" />
     <ClInclude Include="System\Graphic\OpenGlClass.h" />
     <ClInclude Include="System\Graphic\OpenglController.h" />
+    <ClInclude Include="System\Graphic\TextureManager.h" />
     <ClInclude Include="System\Graphic\utils\ObjectHelper.h" />
     <ClInclude Include="System\Graphic\utils\ShaderHelper.h" />
     <ClInclude Include="System\Graphic\utils\VertexBufferHelper.h" />
@@ -159,6 +165,8 @@
     <None Include="Resource\Shaders\FirstFragmentShader.glsl" />
     <None Include="Resource\Shaders\FirstVertexShader.glsl" />
     <None Include="Resource\Shaders\FragmentShaderColor.glsl" />
+    <None Include="Resource\Shaders\TexturePS.glsl" />
+    <None Include="Resource\Shaders\TextureVS.glsl" />
     <None Include="Resource\Shaders\VertexShaderColor.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

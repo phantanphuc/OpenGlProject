@@ -25,9 +25,9 @@ void ComponentCamera::lookat_orbital(float R, float angle_Oxz, float angle_Oy)
 
 
 	camera_position = glm::vec3(
-		R * sin(angle_Oxz) * sin(angle_Oy),
+		R * cos(angle_Oxz) * sin(angle_Oy),
 		R * cos(angle_Oy),
-		R * cos(angle_Oxz) * sin(angle_Oy)
+		R * sin(angle_Oxz) * sin(angle_Oy)
 	);
 
 	upVector = glm::vec3(0.0f, 1.0f, 0.0f);

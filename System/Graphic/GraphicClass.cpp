@@ -48,6 +48,8 @@ void GraphicClass::init(HWND hwnd)
 	glewInit();
 	ReleaseDC(m_hwnd, hDC);
 	
+	initOpenGl();
+
 }
 
 HDC* GraphicClass::getHDC()
@@ -62,6 +64,8 @@ HGLRC* GraphicClass::getHGLRC()
 
 void GraphicClass::initOpenGl()
 {
+	glEnable(GL_DEPTH_TEST);
+	ilInit();
 }
 
 void GraphicClass::render()
