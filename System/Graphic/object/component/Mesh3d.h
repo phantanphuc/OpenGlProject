@@ -34,6 +34,9 @@ public:
 	void setVertexNum(int num);
 	void setDrawType(GLenum type);
 
+	void setTextureID(GLuint id);
+	GLuint getTextureID();
+
 	void render();
 
 	SubComponentMMatrix* getSubComponentModel();
@@ -46,6 +49,8 @@ private:
 	GLuint VAO;
 	GLuint VBO;
 	GLuint EBO;
+
+	GLuint Texture_ID;
 
 	int num_of_vertex;
 	GLenum draw_mode;

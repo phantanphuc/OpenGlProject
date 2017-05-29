@@ -89,6 +89,16 @@ void Mesh3d::setDrawType(GLenum type)
 	draw_mode = type;
 }
 
+void Mesh3d::setTextureID(GLuint id)
+{
+	Texture_ID = id;
+}
+
+GLuint Mesh3d::getTextureID()
+{
+	return Texture_ID;
+}
+
 
 
 void Mesh3d::render()
@@ -104,16 +114,20 @@ void Mesh3d::render()
 	}
 	bindModelMatrix();
 
-	/////////////////////
+	//////// TEXTURE /////////////
 	
+	glBindTexture(GL_TEXTURE_2D, Texture_ID);
 
-
-	//////////////////////
+	//////////////////////////////
 
 
 	glBindVertexArray(VAO);
 	glDrawElements(draw_mode, num_of_vertex, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
+
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+
 }
 
 SubComponentMMatrix * Mesh3d::getSubComponentModel()
@@ -125,7 +139,6 @@ void Mesh3d::bindModelMatrix()
 {
 	if (M_matrix != nullptr) {
 		glm::mat4x4 ModelMatrix = M_matrix->getTranslateMatrix();
-		glUniform1f(glGetUniformLocation(shaderProgram, "myvar"), -0.5f);
 		glUniformMatrix4fv(
 			glGetUniformLocation(shaderProgram, IDENTIFICATION_SHADER_TRANSLATE_MATRIX),
 			1, 

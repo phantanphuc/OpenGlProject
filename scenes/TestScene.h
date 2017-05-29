@@ -19,7 +19,7 @@ public:
 private:
 	
 	void addTestObject2(float testvalue);
-	void addCube(float a);
+	void addCube(float a, float tx);
 	void addCubeTexture(float a);
 	GraphicObject* testObj;
 	float testFloat = 0;

@@ -55,8 +55,6 @@ void ComponentCamera::apply()
 
 void ComponentCamera::bindValue(GLuint shader_program_id)
 {
-	glUniform1f(glGetUniformLocation(shader_program_id, "myvar"), -0.5f);
-
 	glUniformMatrix4fv(
 		glGetUniformLocation(shader_program_id, IDENTIFICATION_SHADER_VIEW_MATRIX),
 		1,

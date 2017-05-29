@@ -15,7 +15,8 @@ void TestScene::createScene()
 	//addTestObject2(0.1f);
 	//addTestObject2(0.5f);
 
-	addCubeTexture(0.5f);
+	addCube(0.5f, 1.0f);
+	addCube(0.5f, 0.0f);
 
 	useDefaultCamera();
 }
@@ -57,7 +58,7 @@ void TestScene::addTestObject2(float testvalue)
 
 }
 
-void TestScene::addCube(float a)
+void TestScene::addCube(float a, float tx)
 {
 	GLfloat vertices[] = {
 		-a,   a, -a,   0.0f, 1.0f,
@@ -116,55 +117,6 @@ void TestScene::addCube(float a)
 	objShaderHelper->useShaderFromFile("Resource/Shaders/TexturePS.glsl", ShaderType::FRAGMENTSHADER);
 
 
-
-
-
-
-	ILboolean result = ilLoadImage("Resource/Image/bh.jpg");
-
-	if (result == true)
-	{
-		printf("the image loaded successfully\n");
-	}
-	else
-	{
-		printf("The image failed to load\n");
-
-		ILenum err = ilGetError();
-		printf("the error %d\n", err);
-		printf("string is %s\n", ilGetString(err));
-	}
-
-	int width = ilGetInteger(IL_IMAGE_WIDTH);
-	int height = ilGetInteger(IL_IMAGE_HEIGHT);
-
-	int size = ilGetInteger(IL_IMAGE_SIZE_OF_DATA);
-	printf("Data size:  %d\n", size);
-	ILubyte * image = ilGetData();
-
-
-
-	glBindTexture(GL_TEXTURE_2D, 0);
-	GLuint texture1;
-
-	glGenTextures(1, &texture1);
-	glBindTexture(GL_TEXTURE_2D, texture1); // All upcoming GL_TEXTURE_2D operations now have effect on our texture object
-											// Set our texture parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// Set texture wrapping to GL_REPEAT
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	// Set texture filtering
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	// Load, create texture and generate mipmaps
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, 0); 
-
-
-
-
-	int i = 0;
-
 	GraphicObject* obj = ObjectHelper::createSimpleMesh3dObject(
 		objShaderHelper,
 		(float*)vertices, sizeof(vertices),
@@ -174,16 +126,15 @@ void TestScene::addCube(float a)
 	);
 
 	delete objShaderHelper;
-
 	addChildObj(obj);
-
 	testObj = obj;
 
 	//////////////////////////////////////////
 
-	
+	GLuint texID = addTexture("Resource/Image/bh.jpg");
 
-
+	obj->getComponent<Mesh3d>()->getSubComponentModel()->setTranslate(tx, 0.0f, 0.0f);
+	obj->getComponent<Mesh3d>()->setTextureID(texID);
 
 
 }

@@ -6,6 +6,7 @@
 
 #include "System\Graphic\TextureManager.h"
 
+
 class BaseScene {
 public:
 	BaseScene();
@@ -35,5 +36,8 @@ protected:
 	ObjectManager* objectManager;
 
 	void addChildObj(GraphicObject* obj);
+
+	TextureManager* texture_manager;
+	GLuint addTexture(char* path);
 };
 #endif
