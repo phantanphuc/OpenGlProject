@@ -4,7 +4,7 @@
 ComponentCamera* current_using_camera = nullptr;
 
 ComponentCamera::ComponentCamera(){
-
+	m_type = ComponentType::CAMERA;
 }
 
 ComponentCamera::~ComponentCamera(){

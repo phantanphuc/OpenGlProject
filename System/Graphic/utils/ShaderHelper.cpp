@@ -37,7 +37,7 @@ void ShaderHelper::useShaderFromFile(char * path, ShaderType type)
 	fread(*current_shader_ref, 1, file_size, reader);
 	//(*current_shader_ref)[file_size + 1] = 'a';
 
-	for (int i = file_size; ; --i) {
+	for (int i = 0; ; ++i) {
 		if ((*current_shader_ref)[file_size - i] == '}') {
 			(*current_shader_ref)[file_size - i + 1] = '\0';
 			break;

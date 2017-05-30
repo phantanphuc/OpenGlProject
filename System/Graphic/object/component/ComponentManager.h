@@ -1,21 +1,33 @@
 #ifndef __COMPONENTMANAGER_H__
 #define __COMPONENTMANAGER_H__
 
+//#include "System\Graphic\object\GraphicObject.h"
+
+#include "SubComponentMMatrix.h"
+
 enum ComponentType {
-	MESH3D, CAMERA
+	NONE_COMPONENT, MESH3D, CAMERA
 };
 
-struct ComponentNode {
-	ComponentType type;
-	void* Component;
-};
+
+
+
+class GraphicObject;
 
 class baseComponent {
 public:
 	baseComponent();
+	virtual ~baseComponent();
 
-private:
+
+	ComponentType getType();
+
+	SubComponentMMatrix* getSubComponentModel();
+	void setSubComponentModel(SubComponentMMatrix* model);
+
+protected:
 	ComponentType m_type;
+	SubComponentMMatrix* M_matrix_ref = nullptr;
 };
 
 

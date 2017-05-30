@@ -7,6 +7,8 @@
 #include <vector>
 #include <type_traits>
 
+#include "component\SubComponentMMatrix.h"
+
 class GraphicObject {
 public:
 	GraphicObject();
@@ -23,8 +25,11 @@ public:
 
 	void Execute();
 
+	SubComponentMMatrix* getSubComponentModel();
+
 private:
-	std::vector<ComponentNode> ComponentList;
+	std::vector<baseComponent*> ComponentList;
+	SubComponentMMatrix* M_matrix = nullptr;
 };
 
 
@@ -40,9 +45,10 @@ inline component_Type * GraphicObject::getComponent()
 		expected_type = ComponentType::CAMERA;
 	}
 
-	for (std::vector<ComponentNode>::iterator it = ComponentList.begin(); it != ComponentList.end(); ++it) {
-		if (it->type == expected_type) {
-			return (component_Type*)(it->Component);
+	for (std::vector<baseComponent*>::iterator it = ComponentList.begin(); it != ComponentList.end(); ++it) {
+		if ((*it)->getType() == expected_type) {
+
+			return dynamic_cast<component_Type*>(*it);
 		}
 	}
 
@@ -52,33 +58,22 @@ inline component_Type * GraphicObject::getComponent()
 template<typename component_Type>
 inline void GraphicObject::addComponent(component_Type * component)
 {
-	ComponentNode newnode;
-
-	if (std::is_same<component_Type, Mesh3d>::value) {
-		newnode.type = ComponentType::MESH3D;
-	}
-	if (std::is_same<component_Type, ComponentCamera>::value) {
-		newnode.type = ComponentType::CAMERA;
-	}
-
-	newnode.Component = (void*)component;
-	ComponentList.push_back(newnode);
+	((baseComponent*)(component))->setSubComponentModel(this->M_matrix);
+	ComponentList.push_back(component);
 }
 
 template<typename component_Type>
 inline void GraphicObject::addComponent()
 {
-	ComponentNode newnode;
+	baseComponent* newnode;
 
 	if (std::is_same<component_Type, Mesh3d>::value) {
-		newnode.type = ComponentType::MESH3D;
-		newnode.Component = (void*) new Mesh3d();
+		newnode = new Mesh3d();
 	}
 	if (std::is_same<component_Type, ComponentCamera>::value) {
-		newnode.type = ComponentType::CAMERA;
-		newnode.Component = (void*) new ComponentCamera();
+		newnode = new ComponentCamera();
 	}
-
+	newnode->setSubComponentModel(this->M_matrix);
 	ComponentList.push_back(newnode);
 }
 

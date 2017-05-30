@@ -6,8 +6,9 @@
 #include <glew.h>
 
 #include "System\Graphic\GraphicDefinition.h"
+#include "ComponentManager.h"
 
-class ComponentCamera {
+class ComponentCamera : public baseComponent {
 public:
 	ComponentCamera();
 	~ComponentCamera();

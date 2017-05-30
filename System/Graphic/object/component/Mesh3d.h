@@ -6,10 +6,12 @@
 
 #include "ComponentManager.h"
 #include "ComponentCamera.h"
-#include "SubComponentMMatrix.h"
 #include "DeviL\IL\il.h"
 
-class Mesh3d {
+
+
+
+class Mesh3d : public baseComponent {
 public:
 	Mesh3d();
 	~Mesh3d();
@@ -39,10 +41,11 @@ public:
 
 	void render();
 
-	SubComponentMMatrix* getSubComponentModel();
+	
 
 	void setUsingTextureState(bool state);
 	void setLightAffection(bool state);
+
 private:
 	GLuint vertexShader;
 	GLuint fragmentShader;
@@ -57,7 +60,7 @@ private:
 	int num_of_vertex;
 	GLenum draw_mode;
 
-	SubComponentMMatrix* M_matrix = nullptr;
+	
 	void bindModelMatrix();
 	void bindModelMatrix(glm::mat4x4 PV);
 

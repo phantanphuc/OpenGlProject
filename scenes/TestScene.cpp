@@ -16,11 +16,11 @@ void TestScene::createScene()
 	//addTestObject2(0.5f);
 
 	addCube(0.5f, 1.0f);
-	addCube(0.5f, 2.0f);
-	addCube(0.5f, 3.0f);
-	addCube(0.5f, 4.0f);
-	addCube(0.5f, 5.0f);
-	addCube(0.5f, 6.0f);
+	//addCube(0.5f, 2.0f);
+	//addCube(0.5f, 3.0f);
+	//addCube(0.5f, 4.0f);
+	//addCube(0.5f, 5.0f);
+	//addCube(0.5f, 6.0f);
 	//addCubeTexture(0.5f);
 
 	useDefaultCamera();
@@ -138,7 +138,7 @@ void TestScene::addCube(float a, float tx)
 
 	GLuint texID = addTexture("Resource/Image/bh.jpg");
 
-	obj->getComponent<Mesh3d>()->getSubComponentModel()->setTranslate(tx, 0.0f, 0.0f);
+	obj->getSubComponentModel()->setTranslate(tx, 0.0f, 0.0f);
 	obj->getComponent<Mesh3d>()->setTextureID(texID);
 
 

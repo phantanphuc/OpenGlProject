@@ -1,21 +1,21 @@
 #include "GraphicObject.h"
 
 GraphicObject::GraphicObject(){
-
+	M_matrix = new SubComponentMMatrix;
 }
 
 GraphicObject::~GraphicObject(){
-	for (std::vector<ComponentNode>::iterator it = ComponentList.begin(); it != ComponentList.end(); ++it) {
-		switch (it->type)
+	for (std::vector<baseComponent*>::iterator it = ComponentList.begin(); it != ComponentList.end(); ++it) {
+		switch ((*it)->getType())
 		{
 		case ComponentType::MESH3D: {
-			Mesh3d* mesh3dref = (Mesh3d*)it->Component;
+			Mesh3d* mesh3dref = dynamic_cast<Mesh3d*>(*it);
 			delete mesh3dref;
 			break;
 		}
 
 		case ComponentType::CAMERA: {
-			ComponentCamera* camera = (ComponentCamera*)it->Component;
+			ComponentCamera* camera = dynamic_cast<ComponentCamera*>(*it);
 			delete camera;
 			break;
 		}
@@ -28,11 +28,11 @@ GraphicObject::~GraphicObject(){
 
 void GraphicObject::Execute()
 {
-	for (std::vector<ComponentNode>::iterator it = ComponentList.begin(); it != ComponentList.end(); ++it) {
-		switch (it->type)
+	for (std::vector<baseComponent*>::iterator it = ComponentList.begin(); it != ComponentList.end(); ++it) {
+		switch ((*it)->getType())
 		{
 		case ComponentType::MESH3D: {
-			Mesh3d* mesh3dref = (Mesh3d*)it->Component;
+			Mesh3d* mesh3dref = dynamic_cast<Mesh3d*>(*it);
 			mesh3dref->render();
 			break;
 		}
@@ -47,4 +47,9 @@ void GraphicObject::Execute()
 			break;
 		}
 	}
+}
+
+SubComponentMMatrix * GraphicObject::getSubComponentModel()
+{
+	return M_matrix;
 }
