@@ -41,6 +41,8 @@ public:
 
 	SubComponentMMatrix* getSubComponentModel();
 
+	void setUsingTextureState(bool state);
+	void setLightAffection(bool state);
 private:
 	GLuint vertexShader;
 	GLuint fragmentShader;
@@ -56,8 +58,10 @@ private:
 	GLenum draw_mode;
 
 	SubComponentMMatrix* M_matrix = nullptr;
-
 	void bindModelMatrix();
+	void bindModelMatrix(glm::mat4x4 PV);
 
+	bool isUseTexture; // or color
+	bool affectedByLight;
 };
 #endif

@@ -30,6 +30,8 @@ public:
 	static void setCurrentCamera(ComponentCamera* camera);
 	static ComponentCamera* getCurrentCamera();
 
+	glm::mat4x4 getPV();
+
 private:
 
 	glm::vec3 camera_position;

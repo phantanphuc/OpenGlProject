@@ -119,6 +119,7 @@
     <ClCompile Include="System\FPSLimiter.cpp" />
     <ClCompile Include="System\Graphic\GraphicClass.cpp" />
     <ClCompile Include="System\Graphic\object\component\ComponentCamera.cpp" />
+    <ClCompile Include="System\Graphic\object\component\ComponentLightSource.cpp" />
     <ClCompile Include="System\Graphic\object\component\ComponentManager.cpp" />
     <ClCompile Include="System\Graphic\object\component\Mesh3d.cpp" />
     <ClCompile Include="System\Graphic\object\component\SubComponentMMatrix.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="System\Graphic\GraphicDefinition.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentCamera.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentHeader.h" />
+    <ClInclude Include="System\Graphic\object\component\ComponentLightSource.h" />
     <ClInclude Include="System\Graphic\object\component\ComponentManager.h" />
     <ClInclude Include="System\Graphic\object\component\Mesh3d.h" />
     <ClInclude Include="System\Graphic\object\component\SubComponentMMatrix.h" />

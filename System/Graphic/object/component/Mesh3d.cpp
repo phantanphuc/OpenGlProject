@@ -2,6 +2,8 @@
 
 Mesh3d::Mesh3d(){
 	M_matrix = new SubComponentMMatrix;
+	isUseTexture = false;
+	affectedByLight = true;
 }
 
 Mesh3d::~Mesh3d(){
@@ -92,6 +94,7 @@ void Mesh3d::setDrawType(GLenum type)
 void Mesh3d::setTextureID(GLuint id)
 {
 	Texture_ID = id;
+	isUseTexture = true;
 }
 
 GLuint Mesh3d::getTextureID()
@@ -108,15 +111,20 @@ void Mesh3d::render()
 	/////////////////////////////// BIND CAMERA ///////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////
 
+	glm::mat4x4 PVM = glm::mat4x4(1.0f);
+
 	ComponentCamera* camera = ComponentCamera::getCurrentCamera();
 	if (camera != nullptr) {
-		camera->bindValue(shaderProgram);
+		//camera->bindValue(shaderProgram);
+		PVM = PVM * camera->getPV();
 	}
-	bindModelMatrix();
+	bindModelMatrix(PVM);
 
 	//////// TEXTURE /////////////
+	if (isUseTexture) {
+		glBindTexture(GL_TEXTURE_2D, Texture_ID);
+	}
 	
-	glBindTexture(GL_TEXTURE_2D, Texture_ID);
 
 	//////////////////////////////
 
@@ -125,14 +133,41 @@ void Mesh3d::render()
 	glDrawElements(draw_mode, num_of_vertex, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 
+	if (isUseTexture) {
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+	
 
 }
 
 SubComponentMMatrix * Mesh3d::getSubComponentModel()
 {
 	return M_matrix;
+}
+
+void Mesh3d::setUsingTextureState(bool state)
+{
+	isUseTexture = state;
+}
+
+void Mesh3d::setLightAffection(bool state)
+{
+	affectedByLight = state;
+}
+
+void Mesh3d::bindModelMatrix(glm::mat4x4 PV)
+{
+	if (M_matrix != nullptr) {
+
+		PV = PV * M_matrix->getTranslateMatrix();
+	}
+
+	glUniformMatrix4fv(
+		glGetUniformLocation(shaderProgram, IDENTIFICATION_SHADER_PVM),
+		1,
+		false,								// transpose
+		glm::value_ptr(PV));				// ptr
 }
 
 void Mesh3d::bindModelMatrix()

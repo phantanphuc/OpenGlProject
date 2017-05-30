@@ -78,3 +78,8 @@ ComponentCamera * ComponentCamera::getCurrentCamera()
 {
 	return current_using_camera;
 }
+
+glm::mat4x4 ComponentCamera::getPV()
+{
+	return P * V;
+}

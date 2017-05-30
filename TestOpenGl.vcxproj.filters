@@ -93,6 +93,9 @@
     <ClCompile Include="System\FPSLimiter.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="System\Graphic\object\component\ComponentLightSource.cpp">
+      <Filter>System\Graphic\object\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System\MainWindow.h">
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="System\FPSLimiter.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Graphic\object\component\ComponentLightSource.h">
+      <Filter>System\Graphic\object\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

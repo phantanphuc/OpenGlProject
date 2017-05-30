@@ -2,9 +2,16 @@
 #define __SHADERHELPER_H__
 
 #include <stdio.h>
+#include <string>
 
 enum ShaderType {
 	VERTEXSHADER, FRAGMENTSHADER
+};
+
+struct VertexShaderStructure
+{
+	std::string header_uniform;
+	std::string header_attribute;
 };
 
 class ShaderHelper {
