@@ -20,6 +20,12 @@ GraphicObject::~GraphicObject(){
 			break;
 		}
 
+		case ComponentType::LIGHT_SOURCE: {
+			ComponentLightSource* lightsource = dynamic_cast<ComponentLightSource*>(*it);
+			delete lightsource;
+			break;
+		}
+
 		default:
 			break;
 		}
@@ -43,6 +49,12 @@ void GraphicObject::Execute()
 			break;
 		}
 
+		case ComponentType::LIGHT_SOURCE: {
+			//ComponentCamera* camera = (ComponentCamera*)it->Component;
+			//camera->render();
+			break;
+		}
+
 		default:
 			break;
 		}
@@ -52,4 +64,45 @@ void GraphicObject::Execute()
 SubComponentMMatrix * GraphicObject::getSubComponentModel()
 {
 	return M_matrix;
+}
+
+void GraphicObject::setTranslate(float x, float y, float z)
+{
+	M_matrix->setTranslate(x, y, z);
+	updatePosition();
+}
+
+void GraphicObject::setTranslate(glm::vec3 trans)
+{
+	M_matrix->setTranslate(trans);
+	updatePosition();
+}
+
+void GraphicObject::translate(float x, float y, float z)
+{
+	M_matrix->translate(x, y, z);
+	updatePosition();
+}
+
+void GraphicObject::translate(glm::vec3 trans)
+{
+	M_matrix->translate(trans);
+	updatePosition();
+}
+
+void GraphicObject::updatePosition()
+{
+	for (std::vector<baseComponent*>::iterator it = ComponentList.begin(); it != ComponentList.end(); ++it) {
+		switch ((*it)->getType())
+		{
+		case ComponentType::LIGHT_SOURCE: {
+			ComponentLightSource* lightsource = dynamic_cast<ComponentLightSource*>(*it);
+			lightsource->setLightPos(M_matrix->getTranslateVector());
+			break;
+		}
+
+		default:
+			break;
+		}
+	}
 }

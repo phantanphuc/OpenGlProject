@@ -22,6 +22,8 @@ public:
 
 	glm::mat4x4 getTranslateMatrix();
 
+	glm::vec3 getTranslateVector();
+
 private:
 
 	glm::mat4x4 Model_matrix;

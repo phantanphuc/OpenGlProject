@@ -1,20 +1,30 @@
-#version 330
+#version 420
 
 in vec2 texcoord;
-
 out vec4 color;
 
 uniform sampler2D ourTexture1;
 
-layout(std140) uniform BlobSettings {
-    vec4 InnerColor;
-    vec4 OuterColor;
-    float RadiusInner;
-    float RadiusOuter;
+
+struct LightStructure{
+	vec4 position;
+	vec4 color;
+	float ambientPow;
+	float diffusePow;
+	float spectularPow;
+	bool enable;
 };
+
+
+layout(std140) uniform LightSystem {
+    LightStructure light[9];
+};
+
+
 
 void main()
 {
-	color = texture2D(ourTexture1, texcoord);
-	//color = vec4(InnerColor.xyz, 1.0f);
+	//color = texture2D(ourTexture1, texcoord);
+	//color = vec4(aOuterColor.xyz, 1.0f);
+	color = light[0].position;
 }

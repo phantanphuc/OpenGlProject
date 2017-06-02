@@ -112,44 +112,26 @@ void Mesh3d::render()
 	
 	///////////////////////////////////////////////////////////////////
 
-	GLuint blockIndex = glGetUniformBlockIndex(shaderProgram, "BlobSettings");
-	GLint blockSize;
-
-	glGetActiveUniformBlockiv(shaderProgram, blockIndex,
-		GL_UNIFORM_BLOCK_DATA_SIZE, &blockSize);
-
-	GLubyte * blockBuffer = new GLubyte[blockSize];
+	/*
 	
-	// Query for the offsets of each block variable
-	const GLchar *names[] = { "InnerColor", "OuterColor",
-		"RadiusInner", "RadiusOuter" };
+	{
+	GLuint ubo;
+	glGenBuffers(1, &ubo);
 
-	GLuint indices[4];
-	glGetUniformIndices(shaderProgram, 4, names, indices);
+	GLuint bp = 1;
 
-	GLint offset[4];
-	glGetActiveUniformsiv(shaderProgram, 4, indices,
-		GL_UNIFORM_OFFSET, offset);
-	GLfloat outerColor[] = { 0.0f, 0.0f, 0.0f, 0.0f };
-	GLfloat innerColor[] = { 1.0f, 1.0f, 0.75f, 1.0f };
-	GLfloat innerRadius = 0.25f, outerRadius = 0.45f;
+	glBindBufferBase(GL_UNIFORM_BUFFER, bp, ubo);
+	float data[10] = { 0.5f, 1.0f, 1.0f, 1.0f,
+	0.5f, 0.5f, 0.5f, 1.0f,
+	1.0f, 1.0f};
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
 
-	memcpy(blockBuffer + offset[0], innerColor,
-		4 * sizeof(GLfloat));
-	memcpy(blockBuffer + offset[1], outerColor,
-		4 * sizeof(GLfloat));
-	memcpy(blockBuffer + offset[2], &innerRadius,
-		sizeof(GLfloat));
-	memcpy(blockBuffer + offset[3], &outerRadius,
-		sizeof(GLfloat));
-	GLuint uboHandle;
-	glGenBuffers(1, &uboHandle);
-	glBindBuffer(GL_UNIFORM_BUFFER, uboHandle);
-	glBufferData(GL_UNIFORM_BUFFER, blockSize, blockBuffer,
-		GL_DYNAMIC_DRAW);
-	glBindBufferBase(GL_UNIFORM_BUFFER, blockIndex, uboHandle);
-
-	delete blockBuffer;
+	GLuint idx = glGetUniformBlockIndex(shaderProgram, "LightSystem");
+	glUniformBlockBinding(shaderProgram, idx, bp);
+	}
+	
+	*/
+	
 
 	///////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////// BIND CAMERA ///////////////////////////////////
@@ -172,6 +154,7 @@ void Mesh3d::render()
 
 	//////////////////////////////
 
+	bindLightSystem();
 
 	glBindVertexArray(VAO);
 	glDrawElements(draw_mode, num_of_vertex, GL_UNSIGNED_INT, 0);
@@ -209,6 +192,11 @@ void Mesh3d::bindModelMatrix(glm::mat4x4 PV)
 		1,
 		false,								// transpose
 		glm::value_ptr(PV));				// ptr
+}
+
+void Mesh3d::bindLightSystem()
+{
+	LightManager::getCurrentLightSystem()->bindLightUniformBuffer(shaderProgram);
 }
 
 void Mesh3d::bindModelMatrix()

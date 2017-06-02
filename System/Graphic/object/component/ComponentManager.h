@@ -6,13 +6,11 @@
 #include "SubComponentMMatrix.h"
 
 enum ComponentType {
-	NONE_COMPONENT, MESH3D, CAMERA
+	NONE_COMPONENT, MESH3D, CAMERA, LIGHT_SOURCE
 };
 
 
 
-
-class GraphicObject;
 
 class baseComponent {
 public:
@@ -24,6 +22,9 @@ public:
 
 	SubComponentMMatrix* getSubComponentModel();
 	void setSubComponentModel(SubComponentMMatrix* model);
+
+
+	
 
 protected:
 	ComponentType m_type;

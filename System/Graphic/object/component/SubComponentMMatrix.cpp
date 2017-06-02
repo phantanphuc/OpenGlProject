@@ -54,3 +54,8 @@ glm::mat4x4 SubComponentMMatrix::getTranslateMatrix()
 {
 	return glm::translate(glm::mat4(1.f), translateVector);
 }
+
+glm::vec3 SubComponentMMatrix::getTranslateVector()
+{
+	return translateVector;
+}

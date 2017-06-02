@@ -6,6 +6,7 @@
 
 #include "ComponentManager.h"
 #include "ComponentCamera.h"
+#include "ComponentLightSource.h"
 #include "DeviL\IL\il.h"
 
 
@@ -63,6 +64,8 @@ private:
 	
 	void bindModelMatrix();
 	void bindModelMatrix(glm::mat4x4 PV);
+
+	void bindLightSystem();
 
 	bool isUseTexture; // or color
 	bool affectedByLight;

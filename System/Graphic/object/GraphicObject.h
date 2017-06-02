@@ -27,9 +27,18 @@ public:
 
 	SubComponentMMatrix* getSubComponentModel();
 
+	void setTranslate(float x, float y, float z);
+	void setTranslate(glm::vec3 trans);
+
+	void translate(float x, float y, float z);
+	void translate(glm::vec3 trans);
+
 private:
 	std::vector<baseComponent*> ComponentList;
 	SubComponentMMatrix* M_matrix = nullptr;
+
+	void updatePosition();
+
 };
 
 
@@ -40,9 +49,12 @@ inline component_Type * GraphicObject::getComponent()
 
 	if (std::is_same<component_Type, Mesh3d>::value) {
 		expected_type = ComponentType::MESH3D;
-	}
+	} else
 	if (std::is_same<component_Type, ComponentCamera>::value) {
 		expected_type = ComponentType::CAMERA;
+	} else
+	if (std::is_same<component_Type, ComponentLightSource>::value) {
+		expected_type = ComponentType::LIGHT_SOURCE;
 	}
 
 	for (std::vector<baseComponent*>::iterator it = ComponentList.begin(); it != ComponentList.end(); ++it) {
@@ -52,7 +64,7 @@ inline component_Type * GraphicObject::getComponent()
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 template<typename component_Type>
@@ -72,6 +84,9 @@ inline void GraphicObject::addComponent()
 	}
 	if (std::is_same<component_Type, ComponentCamera>::value) {
 		newnode = new ComponentCamera();
+	}
+	if (std::is_same<component_Type, ComponentLightSource>::value) {
+		newnode = new ComponentLightSource();
 	}
 	newnode->setSubComponentModel(this->M_matrix);
 	ComponentList.push_back(newnode);

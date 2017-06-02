@@ -24,6 +24,8 @@ private:
 	GraphicObject* testObj;
 	float testFloat = 0;
 
+	void addLight();
+
 	float angle_Oxz = 45;
 	float angle_Oy = 45;
 	float R = 5;

@@ -3,4 +3,6 @@
 
 #include "Mesh3d.h"
 #include "ComponentCamera.h"
+#include "ComponentLightSource.h"
+
 #endif

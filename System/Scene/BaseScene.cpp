@@ -7,6 +7,7 @@ BaseScene::BaseScene(){
 BaseScene::~BaseScene(){
 	delete objectManager;
 	delete texture_manager;
+	delete lightManager;
 }
 
 void BaseScene::initScene()
@@ -17,11 +18,14 @@ void BaseScene::initScene()
 
 	texture_manager = new TextureManager;
 
+	lightManager = new LightManager;
+
 }
 
 void BaseScene::renderScene()
 {
 	listenKeyboard((InputManager::getInstance())->getKeyMap());
+	lightManager->apply();
 	updateScene();
 	objectManager->ExecuteObject();
 }
@@ -56,9 +60,25 @@ void BaseScene::useDefaultCamera()
 	ComponentCamera::setCurrentCamera(camera_ref);
 }
 
+void BaseScene::useThisSceneLight()
+{
+	LightManager::setCurrentLightSystem(lightManager);
+}
+
+void BaseScene::commenceScene()
+{
+	useDefaultCamera();
+	useThisSceneLight();
+}
+
 void BaseScene::addChildObj(GraphicObject * obj)
 {
 	objectManager->addNode(obj);
+
+	ComponentLightSource* lightsource = obj->getComponent<ComponentLightSource>();
+	if (lightsource != nullptr) {
+		lightsource->setLightDataRef(lightManager->getLightSystemSlot(lightsource->getId()));
+	}
 }
 
 GLuint BaseScene::addTexture(char * path)
