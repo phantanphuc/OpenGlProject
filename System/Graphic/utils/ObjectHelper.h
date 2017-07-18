@@ -19,6 +19,11 @@ public:
 		Section* listSection, int numSection
 		);
 
+	static GraphicObject* createSimpleMesh3dObject(
+		ShaderHelper* objShaderHelper,
+		VertexBufferHelper* bufferHelper
+	);
+
 private:
 };
 #endif

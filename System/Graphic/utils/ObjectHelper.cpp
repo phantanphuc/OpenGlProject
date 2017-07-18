@@ -40,3 +40,25 @@ GraphicObject * ObjectHelper::createSimpleMesh3dObject(
 
 	return obj;
 }
+
+GraphicObject * ObjectHelper::createSimpleMesh3dObject(
+	ShaderHelper * objShaderHelper, 
+	VertexBufferHelper * bufferHelper)
+{
+	GraphicObject* obj = new GraphicObject;
+	obj->addComponent<Mesh3d>();
+	Mesh3d* mesh3dref = obj->getComponent<Mesh3d>();
+
+	mesh3dref->setVertexShaderId(OpenglController::getInstance()->
+		CompileVertexShader(objShaderHelper->getVertexShader()));
+	mesh3dref->setFragmentShaderId(OpenglController::getInstance()->
+		CompileFragmentShader(objShaderHelper->getFragmentShader()));
+	OpenglController::getInstance()->createShaderProgram(mesh3dref);
+
+
+	mesh3dref->generateVAO_VBO_EBO();
+
+	OpenglController::getInstance()->bindBuffer(mesh3dref, bufferHelper);
+
+	return obj;
+}

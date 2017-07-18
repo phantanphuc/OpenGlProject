@@ -187,5 +187,8 @@
     <None Include="Resource\Shaders\TextureVS.glsl">
       <Filter>Resource\Shaders</Filter>
     </None>
+    <None Include="Resource\Shaders\LightPS.glsl">
+      <Filter>Resource\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

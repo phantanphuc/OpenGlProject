@@ -46,6 +46,11 @@ public:
 	void setVertexNorm(float* src, int n);
 	void setVertexTexture(float* src, int n);
 
+	void setVertexPosition(float x, float y, float z, int n);
+	void setVertexColor(float x, float y, float z, int n);
+	void setVertexNorm(float x, float y, float z, int n);
+	void setVertexTexture(float x, float y, int n);
+
 private:
 	float* vertexBuffer;
 	int* indexBuffer;

@@ -99,6 +99,33 @@ void VertexBufferHelper::setVertexTexture(float * src, int n)
 		8);
 }
 
+void VertexBufferHelper::setVertexPosition(float x, float y, float z, int n)
+{
+	(vertexBuffer + offset_position + n * stride)[0] = x;
+	(vertexBuffer + offset_position + n * stride)[1] = y;
+	(vertexBuffer + offset_position + n * stride)[2] = z;
+}
+
+void VertexBufferHelper::setVertexColor(float x, float y, float z, int n)
+{
+	(vertexBuffer + offset_color + n * stride)[0] = x;
+	(vertexBuffer + offset_color + n * stride)[1] = y;
+	(vertexBuffer + offset_color + n * stride)[2] = z;
+}
+
+void VertexBufferHelper::setVertexNorm(float x, float y, float z, int n)
+{
+	(vertexBuffer + offset_normal + n * stride)[0] = x;
+	(vertexBuffer + offset_normal + n * stride)[1] = y;
+	(vertexBuffer + offset_normal + n * stride)[2] = z;
+}
+
+void VertexBufferHelper::setVertexTexture(float x, float y, int n)
+{
+	(vertexBuffer + offset_texture + n * stride)[0] = x;
+	(vertexBuffer + offset_texture + n * stride)[1] = y;
+}
+
 void VertexBufferHelper::setSection_Arg(int n, ...)
 {
 	va_list vl;

@@ -24,6 +24,8 @@ private:
 	GraphicObject* testObj;
 	float testFloat = 0;
 
+	void addOrb(float size, int h_slice, int v_slice);
+	
 	void addLight();
 
 	float angle_Oxz = 45;

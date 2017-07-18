@@ -167,6 +167,7 @@
     <None Include="Resource\Shaders\FirstFragmentShader.glsl" />
     <None Include="Resource\Shaders\FirstVertexShader.glsl" />
     <None Include="Resource\Shaders\FragmentShaderColor.glsl" />
+    <None Include="Resource\Shaders\LightPS.glsl" />
     <None Include="Resource\Shaders\TexturePS.glsl" />
     <None Include="Resource\Shaders\TextureVS.glsl" />
     <None Include="Resource\Shaders\VertexShaderColor.glsl" />
